@@ -1,21 +1,225 @@
-- name: Docs
-  link: /docs/
-- name: Example Pages
-  link: /#
-  dropdown:
-    - name: Landing Page With Callouts
-      link: /landing/
-    - name: Promo Page
-      link: /promo-page/
-    - name: Sponsors Page
-      link: /sponsors/
-    - name: Image Gallery
-      link: /gallery/
-    - name: Products
-      link: /products/
-    - name: Recipe Page
-      link: /example-recipe/
-    - name: Showcase
-      link: /showcase/
-- name: Blog
-  link: /blog/
+# _data/navigation.yml
+
+# Header menu (Monarchs)
+header:
+  - title: "George III"
+    url: /monarchs/GeorgeIII
+    children:
+      - title: "Farthings"
+        url: /monarchs/GeorgeIII/G3F.html
+      - title: "Halfpennies"
+        url: /monarchs/GeorgeIII/G3HP.html
+      - title: "Pennies"
+        url: /monarchs/GeorgeIII/G3P.html
+      - title: "Twopence"
+        url: /monarchs/GeorgeIII/G3TP.html
+      - title: "Sixpence"
+        url: /monarchs/GeorgeIII/G36.html
+      - title: "Shillings"
+        url: /monarchs/GeorgeIII/G3S.html
+      - title: "Halfcrowns"
+        url: /monarchs/GeorgeIII/G3HC.html
+      - title: "Crowns"
+        url: /monarchs/GeorgeIII/G3C.html
+
+  - title: "George IV"
+    url: /monarchs/GeorgeIV
+    children:
+      - title: "Third Farthing"
+        url: /monarchs/GeorgeIV/
+      - title: "Half Farthings"
+        url: /monarchs/GeorgeIV/G4HF.html
+      - title: "Farthings"
+        url: /monarchs/GeorgeIV/G4F.html
+      - title: "Halfpennies"
+        url: /monarchs/GeorgeIV/G4HP.html
+      - title: "Pennies"
+        url: /monarchs/GeorgeIV/G4P.html
+      - title: "Sixpence"
+        url: /monarchs/GeorgeIV/G46.html
+      - title: "Shillings"
+        url: /monarchs/GeorgeIV/G4S.html
+      - title: "Halfcrowns"
+        url: /monarchs/GeorgeIV/G4HC.html
+      - title: "Crowns"
+        url: /monarchs/GeorgeIV/G4C.html
+
+  - title: "William IV"
+    url: /monarchs/WilliamIV/
+    children:
+      - title: "Third Farthing"
+        url: /monarchs/WilliamIV/W4TF.html
+      - title: "Half Farthing"
+        url: /monarchs/WilliamIV/W4HF.html
+      - title: "Farthings"
+        url: /monarchs/WilliamIV/W4F.html
+      - title: "Halfpennies"
+        url: /monarchs/WilliamIV/W4HP.html
+      - title: "Pennies"
+        url: /monarchs/WilliamIV/W4P.html
+      - title: "Threehalfpence"
+        url: /monarchs/WilliamIV/W4THP.html
+      - title: "Threepence"
+        url: /monarchs/WilliamIV/W43.html
+      - title: "Groats"
+        url: /monarchs/WilliamIV/W44.html
+      - title: "Sixpence"
+        url: /monarchs/WilliamIV/W46.html
+      - title: "Shillings"
+        url: /monarchs/WilliamIV/W4S.html
+      - title: "Halfcrowns"
+        url: /monarchs/WilliamIV/W4HC.html
+
+  - title: "Victoria"
+    url: /monarchs/Victoria/
+    children:
+      - title: "Quarter Farthings"
+        url: /monarchs/Victoria/VQF.html
+      - title: "Third Farthings"
+        url: /monarchs/Victoria/VTF.html
+      - title: "Half Farthings"
+        url: /monarchs/Victoria/VHF.html
+      - title: "Farthings"
+        url: /monarchs/Victoria/VF.html
+      - title: "Halfpennies"
+        url: /monarchs/Victoria/VHP.html
+      - title: "Pennies"
+        url: /monarchs/Victoria/VP.html
+      - title: "Threehalfpence"
+        url: /monarchs/Victoria/VTHP.html
+      - title: "Threepence"
+        url: /monarchs/Victoria/V3.html
+      - title: "Groats"
+        url: /monarchs/Victoria/V4.html
+      - title: "Sixpence"
+        url: /monarchs/Victoria/V6.html
+      - title: "Shillings"
+        url: /monarchs/Victoria/VS.html
+      - title: "Florins"
+        url: /monarchs/Victoria/VFl.html
+      - title: "Double Florins"
+        url: /monarchs/Victoria/VDF.html
+      - title: "Halfcrowns"
+        url: /monarchs/Victoria/VHC.html
+      - title: "Crowns"
+        url: /monarchs/Victoria/VC.html
+
+  - title: "Edward VII"
+    url: /monarchs/EdwardVII/
+    children:
+      - title: "Third Farthing"
+        url: /monarchs/EdwardVII/E7TF.html
+      - title: "Farthings"
+        url: /monarchs/EdwardVII/E7F.html
+      - title: "Halfpennies"
+        url: /monarchs/EdwardVII/E7HP.html
+      - title: "Pennies"
+        url: /monarchs/EdwardVII/E7P.html
+      - title: "Threepence"
+        url: /monarchs/EdwardVII/E73.html
+      - title: "Sixpence"
+        url: /monarchs/EdwardVII/E76.html
+      - title: "Shillings"
+        url: /monarchs/EdwardVII/E7S.html
+      - title: "Florins"
+        url: /monarchs/EdwardVII/E7Fl.html
+      - title: "Halfcrowns"
+        url: /monarchs/EdwardVII/E7HC.html
+      - title: "Crowns"
+        url: /monarchs/EdwardVII/E7C.html
+
+  - title: "George V"
+    url: /monarchs/GeorgeV/
+    children:
+      - title: "Third Farthing"
+        url: /monarchs/GeorgeV/G5TF.html
+      - title: "Farthings"
+        url: /monarchs/GeorgeV/G5F.html
+      - title: "Halfpennies"
+        url: /monarchs/GeorgeV/G5HP.html
+      - title: "Pennies"
+        url: /monarchs/GeorgeV/G5P.html
+      - title: "Threepence"
+        url: /monarchs/GeorgeV/G53.html
+      - title: "Sixpence"
+        url: /monarchs/GeorgeV/G56.html
+      - title: "Shillings"
+        url: /monarchs/GeorgeV/G5S.html
+      - title: "Florins"
+        url: /monarchs/GeorgeV/G5Fl.html
+      - title: "Halfcrowns"
+        url: /monarchs/GeorgeV/G5HC.html
+      - title: "Crowns"
+        url: /monarchs/GeorgeV/G5C.html
+
+  - title: "George VI"
+    url: /monarchs/GeorgeVI/
+    children:
+      - title: "Farthings"
+        url: /monarchs/GeorgeVI/G6F.html
+      - title: "Halfpennies"
+        url: /monarchs/GeorgeVI/G6HP.html
+      - title: "Pennies"
+        url: /monarchs/GeorgeVI/G6P.html
+      - title: "Threepence"
+        url: /monarchs/GeorgeVI/G63P.html
+      - title: "Sixpence"
+        url: /monarchs/GeorgeVI/G66P.html
+      - title: "Shillings"
+        url: /monarchs/GeorgeVI/G6S.html
+      - title: "Florins"
+        url: /monarchs/GeorgeVI/G6Fl.html
+      - title: "Halfcrowns"
+        url: /monarchs/GeorgeVI/G6HC.html
+      - title: "Crowns"
+        url: /monarchs/GeorgeVI/G6C.html
+
+  - title: "Elizabeth II"
+    url: /monarchs/ElizabethII/
+    children:
+      - title: "Farthings"
+        url: /monarchs/ElizabethII/E2F.html
+      - title: "Halfpennies"
+        url: /monarchs/ElizabethII/E2HP.html
+      - title: "Pennies"
+        url: /monarchs/ElizabethII/E2P.html
+      - title: "Threepence"
+        url: /monarchs/ElizabethII/E23.html
+      - title: "Sixpence"
+        url: /monarchs/ElizabethII/E26.html
+      - title: "Shillings"
+        url: /monarchs/ElizabethII/E2S.html
+      - title: "Florins"
+        url: /monarchs/ElizabethII/E2Fl.html
+      - title: "Halfcrowns"
+        url: /monarchs/ElizabethII/E2HC.html
+      - title: "Crowns"
+        url: /monarchs/ElizabethII/E2C.html
+
+
+# Sidebar menu (General links)
+sidebar:
+  - title: "Home"
+    url: /
+  #- title: "Shop"
+    #url: /shop/
+  - title: "Blog"
+    url: /blog/
+    children:
+      - title: "George III"
+        url: /blog/GeorgeIII/
+      - title: "George V"
+        url: /blog/GeorgeV/
+  - title: "Links"
+    url: /link/
+  - title: "Grading"
+    url: /grading/
+    children:
+      - title: "Sheldon Coin Grading Scale"
+        url: /grading/sheldon.html
+      - title: "Scale Comparison"
+        url: /grading/system-comparison.html
+      - title: "Grading Guide"
+        url: /grading/guide.html
+  - title: "Collector's Ref"
+    url: /collectors/

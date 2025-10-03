@@ -1,0 +1,15 @@
+<aside class="menu">
+  {% if site.data.navigation.sidebar %}
+    <ul class="menu-list">
+      {% for item in site.data.navigation.sidebar %}
+        <li>
+          <a 
+            href="{{ item.url | relative_url }}" 
+            class="{% if page.url == item.url %}is-active{% endif %}">
+            {{ item.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</aside>

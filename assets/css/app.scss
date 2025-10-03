@@ -3,3 +3,195 @@
 
 // Import Main CSS file from theme
 @import "main";
+
+/* ===========================
+   Coin Gallery Grid Overrides
+   =========================== */
+.coin-gallery table {
+  display: none; /* hide old table layout */
+}
+
+.coin-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.coin-card {
+  text-align: center;
+}
+
+.coin-card img {
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.coin-card span {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* ===========================
+   Year Tables Consistency
+   =========================== */
+.table.year-table {
+  margin: 0 auto;           /* centers the table */
+  table-layout: auto;        /* allow table to size based on content */
+  max-width: 650px;          /* restrict table width */
+}
+
+.year-table img {
+  height: 200px;             /* keeps images uniform */
+  width: auto;               /* preserve aspect ratio */
+
+
+
+}
+
+/* ===========================
+   Navbar Gradient + Watermark
+   =========================== */
+.navbar {
+  background: linear-gradient(to right, #0056b3, #d32f2f);
+  position: relative;
+  overflow: visible !important;   /* allow dropdowns to overflow */
+  padding: 1rem 2rem;
+  min-height: 70px;
+}
+
+/* Watermark text */
+.navbar::before {
+  content: "ekxnumis";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.navbar a {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar ul li {
+  position: relative; /* needed for absolute-positioned dropdowns */
+}
+
+/* ---- Top-level links ---- */
+.navbar > ul > li > a,
+.navbar > .nav > li > a,
+.navbar ul.nav > li > a,
+.navbar ul.menu > li > a,
+.navbar .nav-item > a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1.5rem;
+  color: #fff;
+  background: transparent;
+}
+
+.navbar > ul > li > a:hover,
+.navbar > ul > li > a:focus,
+.navbar > ul > li > a:active,
+.navbar > ul > li > a.active {
+  background: rgba(255, 255, 255, 0.15) !important; /* soft overlay */
+  color: #fff !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar > ul > li > a::before,
+.navbar > ul > li > a::after,
+.navbar .nav > li > a::before,
+.navbar .nav > li > a::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* ================================
+   Bulma Navbar Dropdown Overrides
+   ================================ */
+
+/* Fix width of parent links */
+.navbar .navbar-link,
+.navbar .navbar-item.has-dropdown {
+  min-width: 160px;   /* adjust to taste */
+  max-width: 180px;   /* keeps them consistent */
+  text-align: center; /* optional */
+}
+
+/* Dropdown container inherits parent width */
+.navbar .navbar-dropdown {
+  min-width: 100% !important;
+  width: 100% !important;
+  background: linear-gradient(to right, #0056b3, #d32f2f) !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Dropdown items (wrap nicely) */
+.navbar .navbar-dropdown .navbar-item {
+  background: transparent !important;   /* let gradient show */
+  color: #fff !important;
+  padding: 0.5rem 1rem !important;
+  white-space: normal !important;       /* allow wrapping */
+  word-break: break-word !important;    /* break only if needed */
+  overflow-wrap: break-word !important; /* safety */
+}
+
+.navbar .navbar-dropdown .navbar-item:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+
+
+/* Top-level link hover */
+.navbar > ul > li > a:hover,
+.navbar > ul > li > a:focus,
+.navbar > ul > li > a:active,
+.navbar .navbar-link:hover,
+.navbar .navbar-link:focus,
+.navbar .navbar-link:active {
+  background: rgba(255, 255, 255, 0.15) !important; /* soft overlay */
+  color: #fff !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Dropdown item hover */
+.navbar .navbar-dropdown .navbar-item:hover,
+.navbar .navbar-dropdown .navbar-item:focus,
+.navbar .navbar-dropdown .navbar-item:active {
+  background: rgba(255, 255, 255, 0.15) !important; /* same overlay */
+  color: #fff !important;
+}
+
+
+/* Brand/logo item (ekxnumis) */
+.navbar .navbar-brand .navbar-item {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+.navbar .navbar-brand .navbar-item:hover,
+.navbar .navbar-brand .navbar-item:focus,
+.navbar .navbar-brand .navbar-item:active {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.15) !important; /* same overlay */
+}
+

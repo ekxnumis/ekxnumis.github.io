@@ -1,70 +1,128 @@
-<nav
-    class="navbar is-primary {% if site.fixed_navbar %} is-fixed-{{ site.fixed_navbar }} {% endif %}"
-    x-data="{ openNav: false }"
->
-    <div class="container">
-        <div class="navbar-brand">
-            <a href="{{ site.baseurl }}/" class="navbar-item">
-                {{ site.title }}
-            </a>
-            <a
-                role="button"
-                class="navbar-burger burger"
-                aria-label="menu"
-                aria-expanded="false"
-                data-target="navMenu"
-                :class="{ 'is-active': openNav }"
-                x-on:click="openNav = !openNav"
-            >
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div class="navbar-menu" id="navMenu" :class="{ 'is-active': openNav }">
-            <div class="navbar-start">
-                <a href="{{ site.baseurl }}/" class="navbar-item {% if page.url == "/" %}is-active{% endif %}">Home</a>
-                {% if site.data.navigation %}
-                    {% for item in site.data.navigation %}
-                        {% if item.dropdown %}
-                            <div class="navbar-item has-dropdown is-hoverable {% if site.fixed_navbar == 'bottom' %} has-dropdown-up {% endif %}">
-                                <a
-                                    href="{{ item.link | relative_url }}"
-                                    class="navbar-link {% if page.url contains item.link %}is-active{% endif %}"
-                                >
-                                    {{- item.name -}}
-                                </a>
-                                <div class="navbar-dropdown">
-                                    {% for subitem in item.dropdown %}
-                                        <a
-                                            href="{{ subitem.link | relative_url }}"
-                                            class="navbar-item {% if subitem.link == page.url %}is-active{% endif %}"
-                                        >
-                                            {{- subitem.name -}}
-                                        </a>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        {% else %}
-                            <a
-                                href="{{ item.link | relative_url }}"
-                                class="navbar-item {% if item.link == page.url %}is-active{% endif %}"
-                            >
-                                {{- item.name -}}
-                            </a>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            </div>
-
-            <div class="navbar-end">
-                {% if site.gh_sponsor %}
-                    <a class="navbar-item" href="https://github.com/sponsors/{{ site.gh_sponsor }}">
-                        <span class="icon gh-sponsor"><i class="fas fa-heart"></i></span>
-                        <span>Sponsor</span>
-                    </a>
-                {% endif %}
-            </div>
-        </div>
+{% if page.url == "/" %}
+<!-- ========================= -->
+<!-- HOME PAGE HEADER -->
+<!-- ========================= -->
+<nav class="navbar is-primary" x-data="{ openNav: false }">
+  <div class="container">
+    <div class="navbar-brand">
+      <a href="{{ site.baseurl }}/" class="navbar-item">
+        <img src="https://i.postimg.cc/qvSzzTVf/Logo-5.png" alt="Ekxnumis" width="auto" height="auto">
+        <span class="ml-2 has-text-weight-bold is-uppercase is-size-4-tablet is-size-5-mobile">
+          {{ site.title }}
+        </span>
+      </a>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+         data-target="navMenu" :class="{ 'is-active': openNav }"
+         x-on:click="openNav = !openNav">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
+
+    <div class="navbar-menu" id="navMenu" :class="{ 'is-active': openNav }">
+      <div class="navbar-start">
+        <!-- Full nav for homepage -->
+        <a class="navbar-item" href="{{ '/' | relative_url }}">Home</a>
+        <a class="navbar-item" href="{{ '/blog' | relative_url }}">Blog</a>
+        <a class="navbar-item" href="{{ '/links' | relative_url }}">Links</a>
+        <a class="navbar-item" href="{{ '/grading' | relative_url }}">Grading</a>
+        <a class="navbar-item" href="{{ '/collectors' | relative_url }}">Collector’s Reference</a>
+      </div>
+    </div>
+  </div>
 </nav>
+
+{% else %}
+<!-- ========================= -->
+<!-- OTHER PAGES HEADER -->
+<!-- ========================= -->
+<nav class="navbar is-primary">
+  <div class="container">
+    <div class="navbar-brand">
+      <a href="{{ site.baseurl }}/" class="navbar-item">
+        <img src="https://i.postimg.cc/qvSzzTVf/Logo-5.png" alt="Ekxnumis" width="auto" height="auto">
+        <span class="ml-2 has-text-weight-bold is-uppercase is-size-4-tablet is-size-5-mobile">
+          {{ site.title }}
+        </span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========================= -->
+<!-- SECONDARY MONARCH NAVIGATION -->
+<!-- ========================= -->
+<nav class="navbar monarch-nav" role="navigation" aria-label="monarch navigation">
+  <div class="container">
+    <div class="navbar-menu is-active">
+      <div class="navbar-start">
+        {% for item in site.data.navigation.header %}
+          {% if item.children %}
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="{{ item.url | relative_url }}">
+                {{ item.title }}
+              </a>
+              <div class="navbar-dropdown">
+                {% for child in item.children %}
+                  <a class="navbar-item" href="{{ child.url | relative_url }}">
+                    {{ child.title }}
+                  </a>
+                {% endfor %}
+              </div>
+            </div>
+          {% else %}
+            <a class="navbar-item" href="{{ item.url | relative_url }}">
+              {{ item.title }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Secondary header styling */
+  .monarch-nav {
+    background: linear-gradient(90deg, #073763, #8b0000); /* black -> dark red gradient */
+    min-height: 2.2rem; /* slimmer */
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+  }
+
+  .monarch-nav .navbar-item,
+  .monarch-nav .navbar-link {
+    color: #fff !important;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .monarch-nav .navbar-link::after {
+    border-color: #fff !important; /* dropdown arrow white */
+  }
+
+  .monarch-nav .navbar-dropdown {
+    background-color: #222; /* dropdown dark background */
+  }
+
+  .monarch-nav .navbar-dropdown .navbar-item {
+    color: #fff !important;
+  }
+
+  .monarch-nav .navbar-dropdown .navbar-item:hover {
+    background-color: #8b0000;
+    color: #fff !important;
+  }
+
+  /* Remove watermark text effect */
+.monarch-nav::before,
+.monarch-nav::after {
+  content: none !important;
+  display: none !important;
+}
+</style>
+{% endif %}

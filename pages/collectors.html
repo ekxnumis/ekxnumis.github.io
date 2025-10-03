@@ -1,28 +1,28 @@
 ---
 layout: default
-title: Blogs
+title: "Collectors Reference"
+permalink: /collectors/
 ---
-
 
 <main id="main-content" class="container">
 
     <h1 class="title is-2 has-text-white" style="margin-bottom: 2rem;">
-        <span class="icon is-medium"><i class="fas fa-scroll"></i></span>
-        Numismatic Studies & Blogs
+        <span class="icon is-medium"><i class="fas fa-coins"></i></span>
+        Collectors Reference
     </h1>
     <p class="subtitle is-6 has-text-grey-light">
-        In-depth studies of coins across different monarchs and denominations.
+        Complete index of coins across different monarchs and denominations.
     </p>
 
     <hr style="border: 1.5px solid #2596be; margin: 2rem 0;">
 
     <h2 class="title is-4 has-text-primary-light" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
-        Article Index 🔍
+        Monarch Index 🔍
     </h2>
 
-    <div class="blog-toc" style="max-width: 800px; margin-top: 2rem;">
+    <div class="collector-toc" style="max-width: 800px; margin-top: 2rem;">
         
-        {% for cat in site.data.blog.categories %}
+        {% for monarch in site.data.navigation.header %}
             <details class="mb-4 box has-background-darker" {% if forloop.first %}open{% endif %} 
                 style="border: 1px solid #444; padding: 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);">
 
@@ -32,7 +32,7 @@ title: Blogs
                     <div class="is-flex is-justify-content-space-between is-align-items-center">
                         <span class="is-flex is-align-items-center">
                             <span class="icon is-small mr-2 has-text-warning"><i class="fas fa-folder"></i></span>
-                            {{ cat.title }}
+                            {{ monarch.title }}
                         </span>
                         
                         <span class="icon is-small chevron-indicator">
@@ -43,10 +43,10 @@ title: Blogs
                 
                 <div class="content p-4 pt-0">
                     <ul class="has-text-light" style="list-style-type: square; margin-left: 1.5rem;">
-                        {% for child in cat.children %}
+                        {% for coin in monarch.children %}
                             <li>
-                                <a href="{{ child.url }}" class="has-text-primary-light has-text-weight-medium" style="text-decoration: none;">
-                                    {{ child.title }}
+                                <a href="{{ coin.url }}" class="has-text-primary-light has-text-weight-medium" style="text-decoration: none;">
+                                    {{ coin.title }}
                                 </a>
                             </li>
                         {% endfor %}
@@ -59,28 +59,39 @@ title: Blogs
 </main>
 
 <style>
-    /* 1. Custom hover effect for links */
-    .blog-toc a:hover {
+    .collector-toc a:hover {
         text-decoration: underline !important;
     }
-    
-    /* 2. Hide default summary marker (e.g., triangle) */
-    .blog-toc summary {
+    .collector-toc summary {
         list-style: none;
     }
-
-    /* 3. Style for the chevron indicator */
     .chevron-indicator {
         transition: transform 0.2s ease-in-out;
     }
-
-    /* 4. Rotate the chevron when the accordion is OPEN */
-    .blog-toc details[open] .chevron-indicator {
+    .collector-toc details[open] .chevron-indicator {
         transform: rotate(90deg);
     }
-    
-    /* 5. Add a separator for the open section, improving visual grouping */
-    .blog-toc details[open] summary {
+    .collector-toc details[open] summary {
         border-bottom: 1px solid #4a4a4a; 
     }
 </style>
+
+<script>
+    // Exclusive accordion behavior: only one <details> open at a time
+    document.addEventListener('DOMContentLoaded', function () {
+        const detailsElements = document.querySelectorAll('.collector-toc details');
+
+        detailsElements.forEach((detail) => {
+            detail.addEventListener('toggle', function () {
+                if (detail.open) {
+                    // Close all other <details>
+                    detailsElements.forEach((other) => {
+                        if (other !== detail && other.open) {
+                            other.open = false;
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

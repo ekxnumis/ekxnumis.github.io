@@ -1,0 +1,17 @@
+# _data/blog.yml
+categories:
+  - title: "George III"
+    slug: "GeorgeIII"
+    url: /blog/GeorgeIII/
+    children:
+      - title: "1787 Shilling"
+        url: /blog/GeorgeIII/1787 Shilling varieties.html
+      - title: "Halfcrown"
+        url: /blog/GeorgeIII/halfcrown.html
+
+  - title: "George V"
+    slug: "GeorgeV"
+    url: /blog/GeorgeV/
+    children:
+      - title: "Halfcrowns"
+        url: /blog/GeorgeV/halfcrowns.html

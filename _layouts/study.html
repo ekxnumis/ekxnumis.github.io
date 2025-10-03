@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<main class="container">
+  <article class="study">
+    <h1>{{ page.title }}</h1>
+    {% if page.monarch %}
+      <p><strong>Monarch:</strong> {{ page.monarch }}</p>
+    {% endif %}
+    {% if page.denomination %}
+      <p><strong>Denomination:</strong> {{ page.denomination }}</p>
+    {% endif %}
+    {{ content }}
+  </article>
+</main>

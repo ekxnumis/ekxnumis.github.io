@@ -1,0 +1,25 @@
+<!-- ========================= -->
+<!-- Content Protection Script -->
+<!-- ========================= -->
+<style>
+  body {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
+  }
+</style>
+
+<script>
+  // Disable right-click
+  document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+  });
+
+  // Disable keyboard shortcuts: Ctrl+C, Ctrl+U, Ctrl+S
+  document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey && ["c", "u", "s"].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+    }
+  });
+</script>

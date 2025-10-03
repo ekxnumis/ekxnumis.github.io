@@ -23,3 +23,101 @@ $hero-darken: $dark !default;
 .gh-sponsor {
   color: #ea4aaa;
 }
+
+
+
+
+/* ============================
+   Metallic Quick Link Buttons (Cyan Tinge)
+   ============================ */
+.coin-nav .tag {
+  background: linear-gradient(145deg, #e6f7fa, #c0c0c0, #a0cfd9); /* silver + cyan */
+  color: #222 !important;
+  border: 1px solid #8bbac6;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.7); /* soft shine */
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.8),
+              inset -2px -2px 4px rgba(0,0,0,0.15),
+              2px 2px 6px rgba(0,0,0,0.25); /* bevel */
+  transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.coin-nav .tag:hover {
+  background: linear-gradient(145deg, #f5feff, #b0dce8, #9bc5d1); /* brighter with cyan glow */
+  color: #111 !important;
+  transform: translateY(-2px);
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.9),
+              inset -2px -2px 4px rgba(0,0,0,0.2),
+              3px 3px 8px rgba(0,0,0,0.35);
+}
+
+
+
+
+/* ===========================
+   Coin Card Gradient + Bevel
+   =========================== */
+/*.coin-card {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  border-radius: 12px;
+  padding: 1rem;
+  color: #fff;*/
+
+  /* subtle bevel effect */
+/*  box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.1),
+              inset -2px -2px 5px rgba(0, 0, 0, 0.4),
+              4px 4px 10px rgba(0, 0, 0, 0.3);*/
+
+  /*transition: transform 0.2s ease, box-shadow 0.2s ease;*/
+
+/*  &:hover {
+    transform: translateY(-4px);
+    box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.1),
+                inset -2px -2px 5px rgba(0, 0, 0, 0.4),
+                8px 8px 16px rgba(0, 0, 0, 0.5);
+  }
+}*/
+
+/* ============================
+   Sidebar Links (Solid #006CA5)
+   ============================ */
+
+.sidebar a,
+button.button-3 {
+  display: block;
+  margin: 0.5rem 0;
+  padding: 0.8rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font: inherit;
+  color: #fff;
+  cursor: pointer;
+
+  background: #006CA5;   /* Base Royal Blue */
+  border: 2px solid #006CA5;
+  border-radius: 6px;
+  box-shadow: 0 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.15s ease-in-out;
+}
+
+/* Hover */
+.sidebar a:hover,
+button.button-3:hover {
+  background: #005885;   /* Darker royal blue for hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Active / Pressed */
+.sidebar a:active,
+.sidebar a.is-active,
+button.button-3:active {
+  background: #004766;   /* Deep navy for pressed */
+  transform: translateY(3px);
+  box-shadow: 0 2px rgba(0, 0, 0, 0.35);
+  border-color: #004766;
+}
