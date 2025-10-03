@@ -1,11 +1,10 @@
-name: Build and Deploy Jekyll site to Pages
+# .github/workflows/jekyll-build-deploy.yml
+
+name: Build and Deploy Jekyll site to Pages (Fix Dependencies)
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: [ main ] # changed from master
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -24,17 +23,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Ruby
+      # CRITICAL FIX: Setup Ruby with an aggressive cache version
+      # This forces a clean download of all dependencies defined in Gemfile.lock.
+      - name: Setup Ruby and Install Dependencies
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
           bundler-cache: true 
+          cache-version: 2 # <-- SET TO 2 TO GUARANTEE A NEW CACHE
 
-      - name: Install dependencies
-        run: bundle install
+      - name: Setup Pages Environment
+        id: pages
+        uses: actions/configure-pages@v5
 
       - name: Build with Jekyll
-        run: bundle exec jekyll build
+        # We explicitly use 'bundle exec' to ensure the correct theme gem is found and used.
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
 
