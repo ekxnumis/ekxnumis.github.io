@@ -211,7 +211,7 @@ sidebar:
       - title: "George V"
         url: /blog/GeorgeV/
   - title: "Links"
-    url: /link/
+    url: /links/
   - title: "Grading"
     url: /grading/
     children:
@@ -223,3 +223,5 @@ sidebar:
         url: /grading/guide.html
   - title: "Collector's Ref"
     url: /collectors/
+  - title: "Reference Area"
+    url: /reference/
