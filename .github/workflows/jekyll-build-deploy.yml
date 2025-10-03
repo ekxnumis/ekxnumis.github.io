@@ -1,6 +1,6 @@
 # .github/workflows/jekyll-build-deploy.yml
 
-name: Build and Deploy Jekyll site to Pages (Fix Dependencies)
+name: Build and Deploy Jekyll site to Pages
 
 on:
   push:
@@ -23,25 +23,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # CRITICAL FIX: Setup Ruby with an aggressive cache version
-      # This forces a clean download of all dependencies defined in Gemfile.lock.
-      - name: Setup Ruby and Install Dependencies
+      - name: Setup Ruby and Dependencies
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
-          bundler-cache: true 
-          cache-version: 2 # <-- SET TO 2 TO GUARANTEE A NEW CACHE
+          bundler-cache: false # <--- Set to FALSE (We install manually)
+          cache-version: 3 # <--- INCREMENT AGAIN TO 3 FOR A GUARANTEED FRESH START
+
+      # 🔑 CRITICAL FIX STEP 1: Explicitly install the theme and all dependencies 🔑
+      - name: Install Bundler Gems (including theme)
+        run: bundle install
 
       - name: Setup Pages Environment
         id: pages
         uses: actions/configure-pages@v5
 
+      # 🔑 CRITICAL FIX STEP 2: Use the exact build command 🔑
       - name: Build with Jekyll
-        # We explicitly use 'bundle exec' to ensure the correct theme gem is found and used.
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-
+          # Remove cache logic from Ruby setup and use manual bundle install.
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
