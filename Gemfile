@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3"
-#gem "bulma-clean-theme"
+gem "bulma-clean-theme"
 #gem "github-pages" # <--- ADD THIS LINE!
 
 group :jekyll_plugins do

@@ -15,8 +15,7 @@ author:
   linkedin: ""
 
 # Theme settings
-remote_theme: chrisrhymes/bulma-clean-theme
-#theme: bulma-clean-theme
+theme: bulma-clean-theme
 
 
 collections:
@@ -29,7 +28,6 @@ collections:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-remote-theme  <-- ADD THIS LINE
 
 # Social links
 social:
