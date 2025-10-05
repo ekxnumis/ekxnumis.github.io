@@ -1,111 +1,158 @@
-<header>
-  <nav class="navbar main-nav">
-    <div class="container">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="{{ '/' | relative_url }}">
-          <img src="https://i.postimg.cc/4d8GH4Cf/Ekxnumis-Logo-3.png" alt="Ekxnumis logo" style="height:50px;">
-        </a>
+{% if page.url == "/" %}
+<!-- ========================= -->
+<!-- HOME PAGE HEADER -->
+<!-- ========================= -->
+<nav class="navbar is-primary" x-data="{ openNav: false }">
+  <div class="container">
+    <div class="navbar-brand">
+      <a href="{{ site.baseurl }}/" class="navbar-item">
+        <img src="https://i.postimg.cc/qvSzzTVf/Logo-5.png" alt="Ekxnumis" width="auto" height="auto">
+        <span class="ml-2 has-text-weight-bold is-uppercase is-size-4-tablet is-size-5-mobile">
+          {{ site.title }}
+        </span>
+      </a>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+         data-target="navMenu" :class="{ 'is-active': openNav }"
+         x-on:click="openNav = !openNav">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-menu" id="navMenu" :class="{ 'is-active': openNav }">
+      <div class="navbar-start">
+        <a class="navbar-item" href="{{ '/' | relative_url }}">Home</a>
+        <a class="navbar-item" href="{{ '/blog' | relative_url }}">Blog</a>
+        <a class="navbar-item" href="{{ '/links' | relative_url }}">Links</a>
+        <a class="navbar-item" href="{{ '/grading' | relative_url }}">Grading</a>
+        <a class="navbar-item" href="{{ '/collectors' | relative_url }}">Collector’s Reference</a>
+        <a class="navbar-item" href="{{ '/reference' | relative_url }}">Reference Area</a>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Monarch Navigation -->
-  <nav class="navbar monarch-nav">
-    <div class="container">
-      <div class="navbar-menu is-active">
-        <div class="navbar-start">
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">George IV</a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="/monarchs/GeorgeIV/farthings/">Farthings</a>
-              <a class="navbar-item" href="/monarchs/GeorgeIV/halfpennies/">Halfpennies</a>
-              <a class="navbar-item" href="/monarchs/GeorgeIV/pennies/">Pennies</a>
-            </div>
-          </div>
+{% else %}
+<!-- ========================= -->
+<!-- OTHER PAGES HEADER -->
+<!-- ========================= -->
+<nav class="navbar is-primary">
+  <div class="container">
+    <div class="navbar-brand">
+      <a href="{{ site.baseurl }}/" class="navbar-item">
+        <img src="https://i.postimg.cc/qvSzzTVf/Logo-5.png" alt="Ekxnumis" width="auto" height="auto">
+        <span class="ml-2 has-text-weight-bold is-uppercase is-size-4-tablet is-size-5-mobile">
+          {{ site.title }}
+        </span>
+      </a>
+    </div>
+  </div>
+</nav>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">Victoria</a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="/monarchs/Victoria/quarter-farthings/">Quarter Farthings</a>
-              <a class="navbar-item" href="/monarchs/Victoria/third-farthings/">Third Farthings</a>
-              <a class="navbar-item" href="/monarchs/Victoria/halfpennies/">Halfpennies</a>
+<!-- ========================= -->
+<!-- SECONDARY MONARCH NAVIGATION -->
+<!-- ========================= -->
+<nav class="navbar monarch-nav" role="navigation" aria-label="monarch navigation" x-data="{ openItem: null }">
+  <div class="container">
+    <div class="navbar-menu is-active">
+      <div class="navbar-start">
+        {% for item in site.data.navigation.header %}
+          {% if item.children %}
+            <div class="navbar-item has-dropdown" 
+                 :class="{ 'is-active': openItem === {{ forloop.index }} }">
+              <a class="navbar-link" href="{{ item.url | relative_url }}"
+                 x-on:click.prevent="openItem = (openItem === {{ forloop.index }}) ? null : {{ forloop.index }}">
+                {{ item.title }}
+                <span class="dropdown-caret">▼</span>
+              </a>
+              <div class="navbar-dropdown" 
+                   x-show="openItem === {{ forloop.index }}" 
+                   x-transition
+                   @click.outside="openItem = null">
+                {% for child in item.children %}
+                  <a class="navbar-item" href="{{ child.url | relative_url }}">
+                    {{ child.title }}
+                  </a>
+                {% endfor %}
+              </div>
             </div>
-          </div>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">Edward VII</a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="/monarchs/EdwardVII/farthings/">Farthings</a>
-              <a class="navbar-item" href="/monarchs/EdwardVII/halfpennies/">Halfpennies</a>
-              <a class="navbar-item" href="/monarchs/EdwardVII/pennies/">Pennies</a>
-            </div>
-          </div>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">Elizabeth II</a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="/monarchs/ElizabethII/halfpennies/">Halfpennies</a>
-              <a class="navbar-item" href="/monarchs/ElizabethII/pennies/">Pennies</a>
-            </div>
-          </div>
-        </div>
+          {% else %}
+            <a class="navbar-item" href="{{ item.url | relative_url }}">
+              {{ item.title }}
+            </a>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
 
 <style>
-/* ===== MAIN HEADER ===== */
-.main-nav {
-  background: linear-gradient(90deg, #001f6b, #c8102e);
-  color: #fff;
-}
-
-.main-nav .navbar-item img {
-  max-height: 50px;
-}
-
-/* ===== SECONDARY HEADER (MONARCH NAV) ===== */
+/* ========================= */
+/* SECONDARY HEADER STYLES */
+/* ========================= */
 .monarch-nav {
-  background-color: #1a1a1a;
-  color: #fff;
-  border-top: 3px solid #001f6b;
-  border-bottom: 3px solid #c8102e;
+  background: linear-gradient(90deg, #073763, #8b0000);
+  min-height: 2.2rem;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
 }
 
 .monarch-nav .navbar-item,
 .monarch-nav .navbar-link {
-  color: #fff;
-  font-weight: 600;
-}
-
-.monarch-nav .navbar-item:hover,
-.monarch-nav .navbar-link:hover {
-  background-color: #333;
-  color: #ffd700;
+  color: #fff !important;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.75rem;
+  align-items: center;
 }
 
 .monarch-nav .navbar-dropdown {
   background-color: #111;
+  border: none;
+}
+
+.monarch-nav .navbar-dropdown .navbar-item {
+  color: #fff !important;
 }
 
 .monarch-nav .navbar-dropdown .navbar-item:hover {
-  background-color: #222;
-  color: #ffd700;
+  background-color: #8b0000;
+  color: #fff !important;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .monarch-nav .navbar-menu {
-    display: block;
-  }
-  .monarch-nav .navbar-item,
-  .monarch-nav .navbar-link {
-    display: block;
-    padding: 0.5rem 1rem;
-  }
-  .monarch-nav .navbar-dropdown {
-    position: static;
+/* Custom caret styling (single arrow only) */
+.monarch-nav .dropdown-caret {
+  font-size: 0.6rem;
+  margin-left: 0.3rem;
+  transition: transform 0.2s ease;
+}
+.monarch-nav .is-active > .navbar-link .dropdown-caret {
+  transform: rotate(180deg);
+}
+
+/* Disable Bulma's built-in caret */
+.monarch-nav .navbar-link::after {
+  content: none !important;
+}
+
+/* ========================= */
+/* MOBILE & TABLET FIX (Hide below 1024px) */
+/* ========================= */
+@media (max-width: 1024px) {
+  .monarch-nav {
+    display: none !important; /* Hide secondary nav for mobile/tablet */
   }
 }
+
+/* Remove watermark effect */
+.monarch-nav::before,
+.monarch-nav::after {
+  content: none !important;
+  display: none !important;
+}
 </style>
+{% endif %}
