@@ -2,31 +2,29 @@
 layout: default
 title: Blogs
 ---
-
-
 <main id="main-content" class="container">
 
-    <h1 class="title is-2 has-text-white" style="margin-bottom: 2rem;">
+    <h1 class="title is-2 page-title" style="margin-bottom: 2rem;">
         <span class="icon is-medium"><i class="fas fa-scroll"></i></span>
         Numismatic Studies & Blogs
     </h1>
-    <p class="subtitle is-6 has-text-grey-light">
+    <p class="subtitle is-6 page-subtitle">
         In-depth studies of coins across different monarchs and denominations.
     </p>
 
-    <hr style="border: 1.5px solid #2596be; margin: 2rem 0;">
+    <hr class="divider-hr" style="margin: 2rem 0;">
 
-    <h2 class="title is-4 has-text-primary-light" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
+    <h2 class="title is-4 section-title" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
         Article Index 🔍
     </h2>
 
     <div class="blog-toc" style="max-width: 800px; margin-top: 2rem;">
         
         {% for cat in site.data.blog.categories %}
-            <details class="mb-4 box has-background-darker" {% if forloop.first %}open{% endif %} 
-                style="border: 1px solid #444; padding: 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);">
+            <details class="mb-4 box accordion-box" {% if forloop.first %}open{% endif %} 
+                style="padding: 0;">
 
-                <summary class="p-4 is-size-5 has-text-primary has-text-weight-bold" 
+                <summary class="p-4 is-size-5 accordion-summary has-text-weight-bold" 
                     style="cursor: pointer; list-style-type: none;">
                     
                     <div class="is-flex is-justify-content-space-between is-align-items-center">
@@ -42,10 +40,10 @@ title: Blogs
                 </summary>
                 
                 <div class="content p-4 pt-0">
-                    <ul class="has-text-light" style="list-style-type: square; margin-left: 1.5rem;">
+                    <ul class="accordion-content" style="list-style-type: square; margin-left: 1.5rem;">
                         {% for child in cat.children %}
                             <li>
-                                <a href="{{ child.url }}" class="has-text-primary-light has-text-weight-medium" style="text-decoration: none;">
+                                <a href="{{ child.url }}" class="accordion-link has-text-weight-medium" style="text-decoration: none;">
                                     {{ child.title }}
                                 </a>
                             </li>
@@ -59,28 +57,106 @@ title: Blogs
 </main>
 
 <style>
-    /* 1. Custom hover effect for links */
-    .blog-toc a:hover {
-        text-decoration: underline !important;
+/* ----------------------------------------------------------------
+   CSS VARIABLES FOR LIGHT/DARK MODE
+   ---------------------------------------------------------------- */
+
+:root {
+    /* --- DARK MODE (DEFAULT) --- */
+    --main-bg: #1c1c1c;
+    --box-bg: #242424;
+    --main-text: #ffffff;
+    --sub-text: #b5b5b5; /* Text used for subtitles and general body text */
+    --section-title-color: #85d9ee; /* Primary-light color for titles/accents */
+    --accordion-summary-text: #00d1b2; /* Primary color for summary titles */
+    --link-text: #85d9ee; /* Primary-light color for links */
+    --divider-color: #2596be; /* Link color for HR */
+    --box-border-color: #444; /* Darker border */
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        /* --- LIGHT MODE OVERRIDES (HIGH CONTRAST) --- */
+        --main-bg: #f5f5f5;
+        --box-bg: #ffffff;
+        --main-text: #363636;
+        --sub-text: #4a4a4a;
+        --section-title-color: #00d1b2; /* Bulma Primary color */
+        --accordion-summary-text: #000000; /* Black for max contrast on white box */
+        --link-text: #00d1b2; /* Bulma Primary color for links */
+        --divider-color: #dbdbdb; /* Light grey for HR */
+        --box-border-color: #dbdbdb; /* Light grey border */
     }
     
-    /* 2. Hide default summary marker (e.g., triangle) */
-    .blog-toc summary {
-        list-style: none;
+    /* Add subtle shadow to boxes in light mode for definition */
+    .accordion-box {
+        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1) !important;
     }
+}
 
-    /* 3. Style for the chevron indicator */
-    .chevron-indicator {
-        transition: transform 0.2s ease-in-out;
-    }
+/* ----------------------------------------------------------------
+   APPLYING THE CSS VARIABLES TO THE PAGE ELEMENTS 
+   ---------------------------------------------------------------- */
 
-    /* 4. Rotate the chevron when the accordion is OPEN */
-    .blog-toc details[open] .chevron-indicator {
-        transform: rotate(90deg);
-    }
-    
-    /* 5. Add a separator for the open section, improving visual grouping */
-    .blog-toc details[open] summary {
-        border-bottom: 1px solid #4a4a4a; 
-    }
+/* Body/Main Content Background */
+body {
+    background-color: var(--main-bg);
+}
+
+/* Page Titles */
+.page-title {
+    color: var(--main-text) !important;
+}
+/* Subtitles and Body Text */
+.page-subtitle, .accordion-content {
+    color: var(--sub-text) !important;
+}
+/* Article Index Section Title (uses the accent color) */
+.section-title {
+    color: var(--section-title-color) !important; 
+}
+
+/* Divider */
+.divider-hr {
+    border: 1.5px solid var(--divider-color) !important; 
+}
+
+/* Accordion Box */
+.accordion-box {
+    background-color: var(--box-bg) !important;
+    border: 1px solid var(--box-border-color) !important;
+}
+
+/* Accordion Summary Text (Category Title) */
+.accordion-summary {
+    color: var(--accordion-summary-text) !important;
+}
+
+/* Accordion Content Links (Articles) */
+.accordion-link {
+    color: var(--link-text) !important;
+}
+
+
+/* ----------------------------------------------------------------
+   JAVASCRIPT & TRANSITION STYLES (Theme-Agnostic) 
+   ---------------------------------------------------------------- */
+
+.blog-toc a:hover {
+    text-decoration: underline !important;
+}
+.blog-toc summary {
+    list-style: none;
+}
+.chevron-indicator {
+    transition: transform 0.2s ease-in-out;
+}
+.blog-toc details[open] .chevron-indicator {
+    transform: rotate(90deg);
+}
+/* Crucial style for the line under the open summary. Swaps color based on mode. */
+.blog-toc details[open] summary {
+    border-bottom: 1px solid var(--box-border-color); 
+}
 </style>
+
