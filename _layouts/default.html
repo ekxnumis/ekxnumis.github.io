@@ -20,18 +20,25 @@
           
           <!-- Sidebar: only on non-home pages -->
           {% if page.url != "/" %}
-            <div class="column is-2-desktop is-3-tablet is-hidden-mobile" id="sidebar">
-              <aside class="sidebar">
-                {% for item in site.data.navigation.sidebar %}
-                  <a href="{{ item.url }}"
-                     class="{% if page.url == item.url %}is-active{% endif %}">
-                    {{ item.title }}
-                  </a>
-                {% endfor %}
-              </aside>
-            </div>
-          {% endif %}
+         <!-- Mobile toggle button -->
+        <div class="is-hidden-tablet has-text-right mb-3">
+        <button id="sidebar-toggle" class="button is-small is-link is-outlined">
+         ☰ Menu
+        </button>
+        </div>
 
+      <!-- Sidebar -->
+      <div class="column is-2-desktop is-3-tablet" id="sidebar-column">
+      <aside class="sidebar menu">
+      {% for item in site.data.navigation.sidebar %}
+        <a href="{{ item.url }}"
+           class="menu-item {% if page.url == item.url %}is-active{% endif %}">
+          {{ item.title }}
+      </a>
+      {% endfor %}
+        </aside>
+      </div>
+        {% endif %}
           <!-- Main content area -->
           <div class="{% if page.url != '/' %}column is-9-desktop is-8-tablet is-12-mobile{% else %}column is-12{% endif %}">
 
@@ -74,6 +81,19 @@
     {% endunless %}
 
     <!-- Scripts -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.getElementById("sidebar-toggle");
+        const sidebarColumn = document.getElementById("sidebar-column");
+
+        if (toggleButton && sidebarColumn) {
+          toggleButton.addEventListener("click", () => {
+            sidebarColumn.classList.toggle("is-active");
+          });
+        }
+      });
+    </script>
     
     <script src="{{ site.baseurl }}/assets/js/app.js" type="text/javascript"></script>
     {%- include footer-scripts.html -%}

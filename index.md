@@ -83,14 +83,14 @@ show_sidebar: False
     <div class="columns is-multiline is-variable is-3 is-mobile">
 
         {% assign monarch_links = 
-           "George III:/monarchs/GeorgeIII/G3.html,
-            George IV:/monarchs/GeorgeIV/G4.html,
-            William IV:/monarchs/WilliamIV/W4.html,
-            Victoria:/monarchs/Vitoria/V.html,
-            Edward VII:/monarchs/EdwardVII/E7.html,
-            George V:/monarchs/GeorgeV/G5.html,
-            George VI:/monarchs/GeorgeVI/G6.html,
-            Elizabeth II:/monarchs/ElizabethII/E2.html" 
+           "George III:/monarchs/GeorgeIII.html,
+            George IV:/monarchs/GeorgeIV.html,
+            William IV:/monarchs/WilliamIV.html,
+            Victoria:/monarchs/Vitoria.html,
+            Edward VII:/monarchs/EdwardVII.html,
+            George V:/monarchs/GeorgeV.html,
+            George VI:/monarchs/GeorgeVI.html,
+            Elizabeth II:/monarchs/ElizabethII.html" 
            | split: "," %}
 
         {% for item in monarch_links %}

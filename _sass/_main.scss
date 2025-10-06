@@ -121,3 +121,46 @@ button.button-3:active {
   box-shadow: 0 2px rgba(0, 0, 0, 0.35);
   border-color: #004766;
 }
+
+/* ===========================
+   Sidebar Mobile Toggle
+   =========================== */
+
+#sidebar-column {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  #sidebar-column {
+    display: none;
+  }
+
+  #sidebar-column.is-active {
+    display: block;
+    background: #000000;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+}
+
+/* ===========================
+   Mobile Sidebar Toggle Button
+   =========================== */
+#sidebar-toggle {
+  font-size: 1.5rem;          /* size of ☰ icon */
+  color: #fff;              /* text color */
+  background-color: #000000;   /* button background */
+  border: 2px solid #006CA5;   /* border color */
+  border-radius: 6px;          /* rounded corners */
+  padding: 0.5rem 1rem;        /* button padding */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#sidebar-toggle:hover {
+  color: #fff;                 /* text color on hover */
+  background-color: #006CA5;   /* button background on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px rgba(0, 0, 0, 0.2);
+}
