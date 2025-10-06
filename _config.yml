@@ -45,4 +45,4 @@ show_callouts: false
 
 
 # Content Protection 
-enable_content_protection: false
+enable_content_protection: true
