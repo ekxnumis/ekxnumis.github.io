@@ -46,3 +46,8 @@ show_callouts: false
 
 # Content Protection 
 enable_content_protection: false
+
+# Sass / SCSS build
+sass:
+  sass_dir: assets/css
+  style: compressed
