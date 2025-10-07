@@ -3,7 +3,69 @@ layout: default
 title: "Sheldon Grading System - Ekxnumis"
 permalink: /grading/sheldon.html
 ---
+<style>
+/* *******************************************************************
+ * Local Stylesheet Override for Light Mode (prefers-color-scheme: light)
+ * This ensures the content is readable when the global theme is light.
+ * *******************************************************************/
+@media (prefers-color-scheme: light) {
 
+    /* --- General Text and Title Overrides --- */
+    .title.has-text-white, 
+    .title.has-text-light, 
+    .subtitle.has-text-light {
+        color: #363636 !important; /* Dark text for light background */
+    }
+
+    /* --- Full 70-Point Scale Text Overrides --- */
+    .has-text-danger-light {
+        color: #e51400 !important; /* Darker red for visibility */
+    }
+    .has-text-light {
+        color: #363636 !important; /* Dark text for the P-1 to F-19 line */
+    }
+    /* has-text-success, has-text-info, has-text-warning are bright enough to stand on their own */
+
+
+    /* --- Detailed Grading Categories Card Overrides --- */
+    /* Headers need dark text when the background is bright */
+    .card-header-title.has-text-white {
+        color: #363636 !important;
+    }
+    
+    /* Specific Dark Card Overrides (P-1 card) */
+    .card.has-background-dark,
+    .card-content.has-background-dark {
+        background-color: #f5f5f5 !important; /* Light grey background */
+        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    }
+    .card.has-background-dark .content.has-text-white {
+        color: #363636 !important; /* Dark text for P-1 content */
+    }
+    .card-header.has-background-black {
+        background-color: #4a4a4a !important; /* Slightly darker header */
+    }
+
+    /* Specific Grey Card Overrides (Good/About Good) */
+    .card.has-background-grey-light {
+        background-color: #dbdbdb !important; /* Even lighter grey background */
+    }
+    .card-header.has-background-grey-dark {
+        background-color: #b5b5b5 !important; /* Lighter header */
+    }
+
+    /* --- Supplemental & NGC/PCGS Designations Overrides --- */
+    /* Target the text that was originally 'light' */
+    .columns.has-text-light .content {
+        color: #363636 !important; /* Main content text to dark */
+    }
+
+    /* Make strong text darker to contrast against the new dark content text */
+    .has-text-primary {
+        color: #004d9c !important; /* A darker shade of blue */
+    }
+}
+</style>
 
 <section class="section">
     <div class="container">
@@ -149,7 +211,7 @@ permalink: /grading/sheldon.html
 
 <section class="section">
     <div class="container">
-        <h2 class="title is-3 has-text-centered has-text-white">NGC Detailed Grading Categories</h2>
+        <h2 class="title is-3 has-text-centered has-text-white">NGC/PCGS Detailed Grading Categories</h2>
 
         <div class="columns is-multiline">
 
@@ -157,22 +219,22 @@ permalink: /grading/sheldon.html
                 <div class="card has-background-success-light">
                     <header class="card-header has-background-success">
                         <p class="card-header-title is-size-4 has-text-white">
-                            Mint State / Proof (MS/PF 60-70)
+                            Mint State / Proof (MS/PF/PR 60-70)
                         </p>
                     </header>
                     <div class="card-content has-text-grey-darker"> 
                         <div class="content">
-                            <p><strong class="has-text-black">MS/PF - 70:</strong> A coin with no post-production imperfections at 5x magnification.</p>
-                            <p><strong class="has-text-black">MS/PF - 69:</strong> A fully struck coin with nearly imperceptible imperfections.</p>
-                            <p><strong class="has-text-black">MS/PF - 68:</strong> Very sharply struck with only miniscule imperfections.</p>
-                            <p><strong class="has-text-black">MS/PF - 67:</strong> Sharply struck with only a few imperfections.</p>
-                            <p><strong class="has-text-black">MS/PF - 66:</strong> Very well struck with minimal marks and hairlines.</p>
-                            <p><strong class="has-text-black">MS/PF - 65:</strong> Well struck with moderate marks or hairlines.</p>
-                            <p><strong class="has-text-black">MS/PF - 64:</strong> Average or better strike with several obvious marks or hairlines and other miniscule imperfections.</p>
-                            <p><strong class="has-text-black">MS/PF - 63:</strong> Slightly weak or average strike with moderate abrasions and hairlines of varying sizes.</p>
-                            <p><strong class="has-text-black">MS/PF - 62:</strong> Slightly weak or average strike with no trace of wear. More or larger abrasions than an MS/PF 63.</p>
-                            <p><strong class="has-text-black">MS/PF - 61:</strong> Weak or average strike with no trace of wear. More marks and/or multiple large abrasions.</p>
-                            <p><strong class="has-text-black">MS/PF - 60:</strong> Weak or average strike with no trace of wear. Numerous abrasions, hairlines and/or large marks.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 70:</strong> A coin with no post-production imperfections at 5x magnification.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 69:</strong> A fully struck coin with nearly imperceptible imperfections.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 68:</strong> Very sharply struck with only miniscule imperfections.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 67:</strong> Sharply struck with only a few imperfections.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 66:</strong> Very well struck with minimal marks and hairlines.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 65:</strong> Well struck with moderate marks or hairlines.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 64:</strong> Average or better strike with several obvious marks or hairlines and other miniscule imperfections.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 63:</strong> Slightly weak or average strike with moderate abrasions and hairlines of varying sizes.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 62:</strong> Slightly weak or average strike with no trace of wear. More or larger abrasions than an MS/PF 63.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 61:</strong> Weak or average strike with no trace of wear. More marks and/or multiple large abrasions.</p>
+                            <p><strong class="has-text-black">MS/PF/PR - 60:</strong> Weak or average strike with no trace of wear. Numerous abrasions, hairlines and/or large marks.</p>
                         </div>
                     </div>
                 </div>
