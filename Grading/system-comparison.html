@@ -4,6 +4,57 @@ title: "Sheldon Scale vs. Descriptive Grading Systems (CGS, UK, etc.) - Ekxnumis
 permalink: /grading/system-comparison.html
 ---
 
+<style>
+/* * This entire style block is dedicated to overriding the existing Bulma dark mode
+ * classes when the user's system is set to "light" mode.
+ * The original dark mode styling remains the default.
+ */
+@media (prefers-color-scheme: light) {
+    
+    /* Global Section Title/Subtitle Colors */
+    .section .title,
+    .section .subtitle {
+        color: #363636 !important; /* Dark text for light mode */
+    }
+
+    /* Override the main card and table box background */
+    .card.has-background-dark, 
+    .box.has-background-dark {
+        background-color: white !important;
+        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    }
+    
+    /* Override dark text to light text and vice-versa */
+    .has-text-white {
+        color: #363636 !important; /* Dark text for titles */
+    }
+    .has-text-grey-light {
+        color: #4a4a4a !important; /* Darker grey text for subtitles/details */
+    }
+    
+    /* Override text that was originally 'light' to 'dark' for contrast against new light backgrounds */
+    .has-text-light {
+        color: #363636 !important; /* Dark text */
+    }
+    
+    /* Specifically keep the warning text light so it's readable against the new light backgrounds */
+    .has-text-warning-light {
+        color: #a98007 !important; /* A darker, but still distinct, warning color */
+    }
+
+    /*
+     * The table rows with colors like 'has-background-success-light' and 'has-text-black' 
+     * are already light/dark, so they are fine and do not need overriding.
+     */
+
+    /* Conversion Table Dark Rows: Revert has-text-light back to white 
+     * because the background (has-background-success-dark) is still dark.
+     */
+    .has-background-success-dark .has-text-light {
+        color: white !important;
+    }
+}
+</style>
 
 <section class="section">
     <div class="container is-max-desktop">
