@@ -225,3 +225,5 @@ sidebar:
     url: /collectors/
   - title: "Reference Area"
     url: /reference/
+  - title: "Gold/Silver Prices"
+    url: /preciousmetal/

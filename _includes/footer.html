@@ -1,21 +1,37 @@
-<footer class="footer">
-    <div class="container">
-        {% if site.footer_menu %}
-            <div class="columns is-multiline">
-                {% for item in site.data[site.footer_menu] %}
-                    <div class="column has-text-centered">
-                        <div>
-                            <a href="{{ item.link | relative_url }}" class="link">{{ item.name }}</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
+<footer class="footer site-footer">
+  <div class="container">
+    <div class="columns is-gapless is-multiline">
+      
+      <!-- Column 1 -->
+      <div class="column is-half-tablet is-full-mobile">
+        <h3 class="title is-5 footer-title">Menu</h3>
+        <ul>
+          <li><a href="{{ '/pages/about-us' | relative_url }}" class="footer-link">About Us</a></li>
+          <li><a href="{{ '/pages/about-us' | relative_url }}" class="footer-link">Contact Us</a></li>
+        </ul>
+      </div>
 
-        {% include follow.html %}
+      <!-- Column 2 -->
+      <div class="column is-half-tablet is-full-mobile">
+        <h3 class="title is-5 footer-title">Explore</h3>
+        <ul>
+          <li><a href="{{ '/blog' | relative_url }}" class="footer-link">Blog</a></li>
+          <li><a href="{{ '/links' | relative_url }}" class="footer-link">Links</a></li>
+          <li><a href="{{ '/grading' | relative_url }}" class="footer-link">Grading</a></li>
+          <li><a href="{{ '/collectors' | relative_url }}" class="footer-link">Collector’s Reference</a></li>
+          <li><a href="{{ '/reference' | relative_url }}" class="footer-link">Reference Area</a></li>
+          <li><a href="{{ '/preciousmetal' | relative_url }}" class="footer-link">Gold & Silver Prices</a></li>
+        </ul>
+      </div>
 
-        <div class="content is-small has-text-centered">
-            <p class="">Theme built by <a href="https://www.csrhymes.com">C.S. Rhymes</a></p>
-        </div>
     </div>
+
+    {% include follow.html %}
+
+    <div class="content is-small has-text-centered mt-4">
+      <p class="has-text-centered">© 2025 Ekxnumis. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
+
+

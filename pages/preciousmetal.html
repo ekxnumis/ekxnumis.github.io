@@ -1,0 +1,218 @@
+---
+layout: default
+title: "Gold & Silver Prices - Real Time"
+permalink: /preciousmetal/
+---
+<style>
+@media (prefers-color-scheme: light) {
+  /* 1. Force main content area to dark background */
+  main#main-content {
+    color: #ffffff; /* Default text color inside main */
+  }
+
+  /* 2. Headings (h1-h6) inside main */
+  main#main-content h1,
+  main#main-content h3,
+  main#main-content h4,
+  main#main-content h5,
+  main#main-content h6 {
+    color: #0f0f0f !important;
+  }
+
+  /* 3. Paragraphs and list items */
+  main#main-content p,
+  main#main-content li {
+    color: #0f0f0f !important;
+  }
+
+  /* 4. Specific Bulma overrides */
+  .title.has-text-white, 
+  .title.has-text-light {
+    color: #ffffff !important;
+  }
+
+  .subtitle.has-text-grey-light {
+    color: #b5b5b5 !important;
+  }
+
+  /* 5. Boxes (Gold/Silver cards) */
+  .box.has-background-dark {
+    background-color: #363636 !important;
+  }
+
+  /* 6. Tables */
+  .table-container .table {
+    background-color: #4a4a4a !important;
+    color: #ffffff !important;
+  }
+  .table-container .table th,
+  .table-container .table td {
+    color: #ffffff !important;
+  }
+}
+</style>
+<main id="main-content" class="container is-max-desktop">
+  <h1 class="title is-2 has-text-white mb-4">Live Gold & Silver Prices</h1>
+  <p class="subtitle is-5 has-text-grey-light mb-5">
+    Real-time bullion prices (per kg / oz / g) in GBP, USD and EUR. Source: BullionVault.
+  </p>
+
+  <!-- GOLD card -->
+<div class="column">
+  <div class="box has-background-dark">
+    <h2 class="title is-4 has-text-white">Gold</h2>
+    <div class="table-container">
+      <table
+        class="table is-bordered is-fullwidth has-text-centered"
+        style="border: 2px solid #666; border-collapse: collapse; margin-top: 0;"
+      >
+        <thead>
+          <tr>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;"></th>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">GBP (£)</th>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">USD ($)</th>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">EUR (€)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">Kilogram</th>
+            <td id="gold-gbp-kg" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="gold-usd-kg" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="gold-eur-kg" style="border: 2px solid #666; text-align: center;">Loading...</td>
+          </tr>
+          <tr>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">Ounce</th>
+            <td id="gold-gbp-oz" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="gold-usd-oz" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="gold-eur-oz" style="border: 2px solid #666; text-align: center;">Loading...</td>
+          </tr>
+          <tr>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">Gram</th>
+            <td id="gold-gbp-g" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="gold-usd-g" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="gold-eur-g" style="border: 2px solid #666; text-align: center;">Loading...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- SILVER card -->
+<div class="column">
+  <div class="box has-background-dark">
+    <h2 class="title is-4 has-text-white">Silver</h2>
+    <div class="table-container">
+      <table
+        class="table is-bordered is-fullwidth has-text-centered"
+        style="border: 2px solid #666; border-collapse: collapse; margin-top: 0;"
+      >
+        <thead>
+          <tr>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;"></th>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">GBP (£)</th>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">USD ($)</th>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">EUR (€)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">Kilogram</th>
+            <td id="silver-gbp-kg" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="silver-usd-kg" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="silver-eur-kg" style="border: 2px solid #666; text-align: center;">Loading...</td>
+          </tr>
+          <tr>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">Ounce</th>
+            <td id="silver-gbp-oz" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="silver-usd-oz" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="silver-eur-oz" style="border: 2px solid #666; text-align: center;">Loading...</td>
+          </tr>
+          <tr>
+            <th style="border: 2px solid #666; padding: 0.6rem; text-align: center; vertical-align: middle;">Gram</th>
+            <td id="silver-gbp-g" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="silver-usd-g" style="border: 2px solid #666; text-align: center;">Loading...</td>
+            <td id="silver-eur-g" style="border: 2px solid #666; text-align: center;">Loading...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <div class="tags is-centered" style="margin-top:2rem;">
+    <a class="tag is-link is-medium" href="/">
+      ← Back to Home
+    </a>
+  </div>
+</main>
+
+<script>
+const BV_URL = "https://www.bullionvault.com/view_market_json.do";
+const OUNCE_TO_GRAM = 31.1034768;
+
+function formatCurrency(value, currency) {
+  if (!value || isNaN(value)) return "N/A";
+  const symbol = currency === "GBP" ? "£" : currency === "USD" ? "$" : "€";
+  return symbol + value.toFixed(2);
+}
+
+async function fetchAndRender() {
+  try {
+    const res = await fetch(BV_URL);
+    if (!res.ok) throw new Error("Network error");
+    const data = await res.json();
+
+    const pitches = data?.market?.pitches;
+    if (!Array.isArray(pitches)) throw new Error("Invalid data format");
+
+    const metals = ["GOLD", "SILVER"];
+    const currencies = ["GBP", "USD", "EUR"];
+
+    metals.forEach((metal) => {
+      currencies.forEach((cur) => {
+        const item = pitches.find(
+          (p) => p.securityClassNarrative === metal && p.considerationCurrency === cur
+        );
+
+        if (!item) {
+          ["kg", "oz", "g"].forEach((u) =>
+            document.getElementById(`${metal.toLowerCase()}-${cur.toLowerCase()}-${u}`).textContent = "N/A"
+          );
+          return;
+        }
+
+        const buy = item.buyPrices?.[0]?.limit;
+        const sell = item.sellPrices?.[0]?.limit;
+        if (!buy || !sell) return;
+
+        const midPerKg = (buy + sell) / 2;
+        const perGram = midPerKg / 1000;
+        const perOunce = perGram * OUNCE_TO_GRAM;
+
+        const values = { kg: midPerKg, oz: perOunce, g: perGram };
+
+        for (const [u, val] of Object.entries(values)) {
+          document.getElementById(`${metal.toLowerCase()}-${cur.toLowerCase()}-${u}`).textContent =
+            formatCurrency(val, cur);
+        }
+      });
+    });
+  } catch (err) {
+    console.error("Error fetching BullionVault data:", err);
+    ["gold", "silver"].forEach((m) =>
+      ["gbp", "usd", "eur"].forEach((c) =>
+        ["kg", "oz", "g"].forEach((u) => {
+          const el = document.getElementById(`${m}-${c}-${u}`);
+          if (el) el.textContent = "Error";
+        })
+      )
+    );
+  }
+}
+
+// Load once, then refresh every 10 minutes
+fetchAndRender();
+setInterval(fetchAndRender, 10 * 60 * 1000);
+</script>
