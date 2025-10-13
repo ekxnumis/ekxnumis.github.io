@@ -165,19 +165,21 @@ button.button-3:active {
   box-shadow: 0 4px rgba(0, 0, 0, 0.2);
 }
 
+/* ==========================================================
+   FOOTER (Mobile Accordion + Desktop Columns)
+   ========================================================== */
 
-/* ===========================
-   Footer Styling
-   =========================== */
 .site-footer {
   background-color: #002236;
   color: #fff;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  font-family: $family-sans-serif;
 
   ul {
     list-style: none;
-    padding-left: 0;
+    padding-left: 1.2rem; /* indentation for mobile */
+    margin: 0;
   }
 
   li {
@@ -187,56 +189,141 @@ button.button-3:active {
   .footer-link {
     color: #e0e0e0;
     text-decoration: none;
+    display: block;
+    padding: 0.25rem 0;
 
     &:hover {
-      text-decoration: underline;
       color: #fff;
+      text-decoration: underline;
     }
   }
 
   .footer-title {
     color: #fff;
-    margin-bottom: 0.75rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0;
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 56px;
   }
 
-  .footer-credit {
-    color: #b0b0b0;
+  .footer-arrow {
+    transition: transform 0.3s ease;
+    font-size: 1rem;
   }
 
-  /* Center two columns but keep natural spacing */
+  .footer-arrow.rotated {
+    transform: rotate(180deg);
+  }
+
+  .footer-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  /* Make columns close together on desktop */
   .columns {
     justify-content: center;
+    gap: 3rem;
   }
 
-  /* Adjust spacing between columns */
   .column {
+    max-width: 240px;
     text-align: left;
-    max-width: 220px;
   }
+}
 
-  /* Mobile layout */
-  @media (max-width: 768px) {
+/* ===========================
+   MOBILE: Accordion Style
+   =========================== */
+@media (max-width: 768px) {
+  .site-footer {
     .columns {
       flex-direction: column;
-      align-items: center;
-      text-align: center;
+      align-items: stretch;
+      gap: 0;
     }
 
-    .column {
-      max-width: 100%;
+    .footer-section {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-title {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      padding: 0.9rem 1rem;
+      position: relative;
+    }
+
+    .footer-title::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .footer-content {
+      max-height: 0;
+      padding-left: 1rem; /* indentation */
+    }
+
+    .footer-content.is-active {
+      max-height: 500px;
+    }
+
+    .footer-section:last-child {
+      border-bottom: none;
     }
   }
 }
 
 /* ===========================
-   Light Mode
+   DESKTOP: Always Expanded
+   =========================== */
+@media (min-width: 769px) {
+  .footer-arrow,
+  .footer-title::after {
+    display: none;
+  }
+
+  .footer-content {
+    max-height: none !important;
+    padding-left: 0; /* remove indentation */
+  }
+
+  .footer-title {
+    cursor: default;
+    background: none;
+    padding: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-section {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* ===========================
+   LIGHT MODE
    =========================== */
 html[data-theme='light'] .site-footer {
   background-color: #f5f5f5;
   color: #222;
 
   .footer-title {
-    color: #222;
+    color: #111;
   }
 
   .footer-link {
@@ -247,7 +334,17 @@ html[data-theme='light'] .site-footer {
     }
   }
 
-  .footer-credit {
-    color: #555;
+  @media (max-width: 768px) {
+    .footer-title {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-section {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .footer-title::after {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
   }
 }
