@@ -1,0 +1,154 @@
+---
+layout: default
+title: Gold Prices
+permalink: /gold-price/
+---
+
+<style>
+/* ===== Filter Bar Styles ===== */
+#filter-bar .filter-row {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#filter-bar .filter-group {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.filter-label {
+  font-weight: 600;
+  color: var(--text-color, #cfcfcf);
+  margin-right: .5rem;
+}
+
+.btn {
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.35rem 0.65rem;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: inherit;
+  margin-right: .4rem;
+}
+.btn:hover { transform: translateY(-1px); }
+
+.filter-btn.active {
+  background: var(--accent, #3b82f6);
+  color: white;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  border-color: transparent;
+}
+
+@media (max-width: 880px) {
+  #filter-bar .filter-row { flex-direction: column; align-items: stretch; }
+  #filter-bar .filter-group { justify-content: flex-start; }
+}
+</style>
+
+<main id="main-content" class="container is-max-widescreen">
+  <h1 class="title is-2">Gold Price Chart (per gram)</h1>
+
+  <section id="filter-bar" class="mb-5">
+    <div class="filter-row">
+      <div class="filter-group">
+        <span class="filter-label">Select Period:</span>
+        <button class="btn filter-btn active" data-file="gold_today.json">Today</button>
+        <button class="btn filter-btn" data-file="gold_week.json">1W</button>
+        <button class="btn filter-btn" data-file="gold_month.json">1M</button>
+        <button class="btn filter-btn" data-file="gold_6month.json">6M</button>
+        <button class="btn filter-btn" data-file="gold_year.json">1Y</button>
+        <button class="btn filter-btn" data-file="gold_5y.json">5Y</button>
+        <button class="btn filter-btn" data-file="gold_10y.json">10Y</button>
+        <button class="btn filter-btn" data-file="gold_15y.json">15Y</button>
+        <button class="btn filter-btn" data-file="gold_20y.json">20Y</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <canvas id="goldChart" width="600" height="400"></canvas>
+  </section>
+</main>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const ctx = document.getElementById("goldChart").getContext("2d");
+  let goldChart;
+
+  async function loadChart(file) {
+    try {
+      const res = await fetch(`/assets/data/${file}`);
+      if (!res.ok) throw new Error("File not found: " + file);
+      const data = await res.json();
+
+      const labels = data.map(item => item.date);
+      const prices = data.map(item => item.price);
+
+      if (goldChart) goldChart.destroy();
+
+      goldChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "Gold Price (GBP/gram)",
+            data: prices,
+            borderColor: "#FFD700",
+            backgroundColor: "rgba(255, 215, 0, 0.2)",
+            fill: true,
+            tension: 0.3,
+            pointRadius: 4,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              title: { display: true, text: "Date" },
+              ticks: { color: "#ccc" }
+            },
+            y: {
+              title: { display: true, text: "GBP/gram" },
+              ticks: { color: "#ccc" }
+            }
+          },
+          plugins: {
+            legend: { labels: { color: "#fff" } },
+            tooltip: {
+              callbacks: {
+                label: context => `£${context.parsed.y.toFixed(2)}`
+              }
+            }
+          }
+        }
+      });
+
+    } catch (err) {
+      console.error("Error loading chart:", err);
+    }
+  }
+
+  // Event listeners for filter buttons
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const file = btn.dataset.file;
+      loadChart(file);
+    });
+  });
+
+  // Load default (today)
+  loadChart("gold_6month.json");
+});
+</script>

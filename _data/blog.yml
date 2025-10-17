@@ -1,14 +1,27 @@
 # _data/blog.yml
 categories:
+  - title: "George II"
+    slug: "GeorgeII"
+    url: /blog/GeorgeII/
+    children:
+      - title: "GeorgeII Halfcrowns"
+        url: /blog/GeorgeII/halfcrowns.html
   - title: "George III"
     slug: "GeorgeIII"
     url: /blog/GeorgeIII/
     children:
-      - title: "1787 Shilling"
+      - title: "A Study 1787 Shilling Varieties"
         url: /blog/GeorgeIII/1787 Shilling varieties.html
       - title: "Halfcrown"
         url: /blog/GeorgeIII/halfcrown.html
-
+  - title: "Victoria"
+    slug: "Victoria"
+    url: /blog/Victoria/
+    children:
+      - title: "Victorian Double Florins"
+        url: /blog/Victoria/doubleflorin.html
+      - title: "Halfcrown"
+        url: 
   - title: "George V"
     slug: "GeorgeV"
     url: /blog/GeorgeV/

@@ -1,0 +1,70 @@
+{
+  "timestamp": "2025-10-16T12:15:51.114979",
+  "live": {
+    "success": true,
+    "base": "XAU",
+    "timestamp": 1760572799,
+    "rates": {
+      "GBP": 3129.3813683589,
+      "XAUGBP": 0.000319552
+    }
+  },
+  "historical": {
+    "week": {
+      "success": false,
+      "error": {
+        "statusCode": 404,
+        "message": "User requested a non-existent API function. See documentation here: https://metalpriceapi.com/documentation"
+      }
+    },
+    "month": {
+      "success": false,
+      "error": {
+        "statusCode": 404,
+        "message": "User requested a non-existent API function. See documentation here: https://metalpriceapi.com/documentation"
+      }
+    },
+    "6month": {
+      "success": false,
+      "error": {
+        "statusCode": 404,
+        "message": "User requested a non-existent API function. See documentation here: https://metalpriceapi.com/documentation"
+      }
+    },
+    "year": {
+      "success": false,
+      "error": {
+        "statusCode": 404,
+        "message": "User requested a non-existent API function. See documentation here: https://metalpriceapi.com/documentation"
+      }
+    },
+    "5year": {
+      "success": false,
+      "error": {
+        "statusCode": 404,
+        "message": "User requested a non-existent API function. See documentation here: https://metalpriceapi.com/documentation"
+      }
+    },
+    "10year": {
+      "success": false,
+      "error": {
+        "statusCode": 404,
+        "message": "User requested a non-existent API function. See documentation here: https://metalpriceapi.com/documentation"
+      }
+    },
+    "15year": {
+      "success": false,
+      "error": {
+        "statusCode": 404,
+        "message": "User requested a non-existent API function. See documentation here: https://metalpriceapi.com/documentation"
+      }
+    },
+    "20year": {
+      "success": false,
+      "error": {
+        "statusCode": 404,
+        "message": "User requested a non-existent API function. See documentation here: https://metalpriceapi.com/documentation"
+      }
+    }
+  }
+}

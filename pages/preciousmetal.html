@@ -147,16 +147,51 @@ permalink: /preciousmetal/
   </div>
 
 
-  <div class="tags is-centered" style="margin-top:2rem;">
+<!-- SOVEREIGN PRICE CARD -->
+<div class="column">
+  <div class="box has-background-dark">
+    <h2 class="title is-4 has-text-white">Gold Sovereign Spot Price</h2>
+    <p class="has-text-grey-light" style="font-size: 0.9rem; margin-bottom: 1rem;">
+      Based on live gold price (contains 7.3224g of fine gold)
+    </p>
+    <div class="table-container">
+      <table
+        class="table is-bordered is-fullwidth has-text-centered"
+        style="border: 2px solid #666; border-collapse: collapse; margin-top: 0;"
+      >
+        <thead>
+          <tr>
+            <th style="border: 2px solid #666; padding: 0.6rem;">Currency</th>
+            <th style="border: 2px solid #666; padding: 0.6rem;">Spot Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="border: 2px solid #666; text-align: center;">GBP (£)</th>
+            <td id="sovereign-gbp" style="border: 2px solid #666; text-align: center;">Loading...</td>
+          </tr>
+          <tr>
+            <th style="border: 2px solid #666; text-align: center;">USD ($)</th>
+            <td id="sovereign-usd" style="border: 2px solid #666; text-align: center;">Loading...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="tags is-centered" style="margin-top:2rem;">
     <a class="tag is-link is-medium" href="/">
       ← Back to Home
     </a>
   </div>
+
 </main>
 
 <script>
 const BV_URL = "https://www.bullionvault.com/view_market_json.do";
 const OUNCE_TO_GRAM = 31.1034768;
+const SOVEREIGN_WEIGHT_GRAMS = 7.3224;
 
 function formatCurrency(value, currency) {
   if (!value || isNaN(value)) return "N/A";
@@ -179,12 +214,17 @@ async function fetchAndRender() {
     metals.forEach((metal) => {
       currencies.forEach((cur) => {
         const item = pitches.find(
-          (p) => p.securityClassNarrative === metal && p.considerationCurrency === cur
+          (p) =>
+            p.securityClassNarrative === metal &&
+            p.considerationCurrency === cur
         );
 
         if (!item) {
-          ["kg", "oz", "g"].forEach((u) =>
-            document.getElementById(`${metal.toLowerCase()}-${cur.toLowerCase()}-${u}`).textContent = "N/A"
+          ["kg", "oz", "g"].forEach(
+            (u) =>
+              (document.getElementById(
+                `${metal.toLowerCase()}-${cur.toLowerCase()}-${u}`
+              ).textContent = "N/A")
           );
           return;
         }
@@ -200,11 +240,39 @@ async function fetchAndRender() {
         const values = { kg: midPerKg, oz: perOunce, g: perGram };
 
         for (const [u, val] of Object.entries(values)) {
-          document.getElementById(`${metal.toLowerCase()}-${cur.toLowerCase()}-${u}`).textContent =
-            formatCurrency(val, cur);
+          document.getElementById(
+            `${metal.toLowerCase()}-${cur.toLowerCase()}-${u}`
+          ).textContent = formatCurrency(val, cur);
         }
       });
     });
+
+    // --- Sovereign Calculation ---
+    const goldGBPText = document
+      .getElementById("gold-gbp-g")
+      .textContent.replace(/[£$,]/g, "");
+    const goldUSDText = document
+      .getElementById("gold-usd-g")
+      .textContent.replace(/[£$,]/g, "");
+
+    const goldGBP = parseFloat(goldGBPText);
+    const goldUSD = parseFloat(goldUSDText);
+
+    if (!isNaN(goldGBP)) {
+      const sovereignGBP = goldGBP * SOVEREIGN_WEIGHT_GRAMS;
+      document.getElementById("sovereign-gbp").textContent =
+        formatCurrency(sovereignGBP, "GBP");
+    } else {
+      document.getElementById("sovereign-gbp").textContent = "N/A";
+    }
+
+    if (!isNaN(goldUSD)) {
+      const sovereignUSD = goldUSD * SOVEREIGN_WEIGHT_GRAMS;
+      document.getElementById("sovereign-usd").textContent =
+        formatCurrency(sovereignUSD, "USD");
+    } else {
+      document.getElementById("sovereign-usd").textContent = "N/A";
+    }
   } catch (err) {
     console.error("Error fetching BullionVault data:", err);
     ["gold", "silver"].forEach((m) =>
@@ -215,10 +283,13 @@ async function fetchAndRender() {
         })
       )
     );
+
+    document.getElementById("sovereign-gbp").textContent = "Error";
+    document.getElementById("sovereign-usd").textContent = "Error";
   }
 }
 
-// Load once, then refresh every 10 minutes
+// Run immediately and every 10 min
 fetchAndRender();
 setInterval(fetchAndRender, 10 * 60 * 1000);
 </script>

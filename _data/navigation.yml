@@ -206,8 +206,12 @@ sidebar:
   - title: "Blog"
     url: /blog/
     children:
+      - title: "George II"
+        url: /blog/GeorgeII/
       - title: "George III"
         url: /blog/GeorgeIII/
+      - title: "Victoria"
+        url: /blog/Victoria/
       - title: "George V"
         url: /blog/GeorgeV/
   - title: "Links"
@@ -227,5 +231,5 @@ sidebar:
     url: /reference/
   - title: "Gold/Silver Prices"
     url: /preciousmetal/
-  - title: "Gallery"
-    url: /gallery/
+ # - title: "Gallery"
+    #url: /gallery/
