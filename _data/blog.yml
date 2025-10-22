@@ -19,7 +19,7 @@ categories:
     url: /blog/Victoria/
     children:
       - title: "Victorian Double Florins"
-        url: /blog/Victoria/doubleflorin.html
+        url: /blog/Victoria/doubleflorin varieties.html
       - title: "Halfcrown"
         url: 
   - title: "George V"
@@ -28,3 +28,5 @@ categories:
     children:
       - title: "Halfcrowns"
         url: /blog/GeorgeV/halfcrowns.html
+      - title: 1914 Florin varieties
+        url: /blog/GeorgeV/1914florin-varieties.html
