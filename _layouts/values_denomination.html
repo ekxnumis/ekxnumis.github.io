@@ -1,0 +1,88 @@
+---
+layout: default
+---
+
+<main id="main-content" class="container is-max-widescreen">
+
+  <!-- ========================= -->
+  <!-- PAGE HEADER -->
+  <!-- ========================= -->
+  <section class="section">
+    <div class="content has-text-centered">
+      <h1 class="title is-2 has-text-weight-bold" style="color:#b2975b; letter-spacing:1px;">
+        {{ page.monarch }} — {{ page.denomination }}
+      </h1>
+      <p class="subtitle is-6 has-text-grey-light">
+        Year-by-year coin values by grade
+      </p>
+    </div>
+
+    <hr class="divider-hr" style="margin:2rem 0;">
+
+    <!-- ========================= -->
+    <!-- TABLE OF VALUES -->
+    <!-- ========================= -->
+   {% assign denom_clean = page.denomination | downcase | strip %}
+{% assign monarch_clean = page.monarch | downcase | strip %}
+
+{% assign all_coins = site.data.shilling_values %}
+{% assign filtered = "" | split: "" %}
+
+{% for c in all_coins %}
+  {% assign denom = c.Denomination | downcase | strip %}
+  {% assign monarch = c.Monarch | downcase | strip %}
+  {% assign year = c.Year | strip %}
+  {% if denom contains denom_clean and monarch contains monarch_clean %}
+    {% assign filtered = filtered | push: c %}
+  {% endif %}
+{% endfor %}
+
+{% assign coins = filtered | sort: "Year" %}
+
+    {% if coins != empty %}
+    <div class="table-container">
+      <table class="table is-bordered is-fullwidth has-text-centered">
+        <thead>
+          <tr style="background:#1a1a1a; color:#b2975b;">
+            <th>Year</th>
+            <th>F</th>
+            <th>VF</th>
+            <th>EF</th>
+            <th>UNC</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for coin in coins %}
+          <tr>
+            <td>{{ coin.Year }}</td>
+            <td>{{ coin.F }}</td>
+            <td>{{ coin.VF }}</td>
+            <td>{{ coin.EF }}</td>
+            <td>{{ coin.UNC }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <p class="has-text-grey-light has-text-centered">
+      No values available for {{ page.monarch }} {{ page.denomination }}.
+    </p>
+    {% endif %}
+
+  </section>
+</main>
+
+<style>
+.table th {
+  background-color: #222;
+  color: #b2975b;
+}
+.table td {
+  background-color: #111;
+  color: #ddd;
+}
+.table tr:hover td {
+  background-color: #2a2a2a;
+}
+</style>

@@ -1,0 +1,110 @@
+---
+layout: default
+title: "UK Coin Values - Ekxnumis"
+permalink: /values/
+---
+
+<main id="main-content" class="container is-max-widescreen">
+
+  <!-- ========================= -->
+  <!-- PAGE HEADER -->
+  <!-- ========================= -->
+  <section class="section">
+    <div class="content has-text-centered">
+      <h1 class="title is-2 has-text-weight-bold" style="color:#b2975b; letter-spacing:1px;">
+        United Kingdom Coin Values
+      </h1>
+      <p class="subtitle is-6 has-text-grey-light">
+        Explore coin values by monarch and denomination (Charles II – Elizabeth II)
+      </p>
+    </div>
+
+    <hr class="divider-hr" style="margin:2rem 0;">
+
+    <!-- ========================= -->
+    <!-- MONARCH × DENOMINATION GRID -->
+    <!-- ========================= -->
+    <div class="content">
+
+      {% assign monarchs = 
+        "Charles II,James II,William and Mary,William III,Anne,George I,George II,George III,George IV,William IV,Victoria,Edward VII,George V,George VI,Elizabeth II" 
+        | split: "," 
+      %}
+
+      {% assign denominations = "Crown,Halfcrown,Florin,Shilling,Sixpence,Threepence" | split: "," %}
+
+      {% for monarch in monarchs %}
+      <section class="box has-background-dark mb-5" style="border-radius:12px;">
+        <h2 class="title is-4 has-text-weight-semibold has-text-centered" style="color:#b2975b;letter-spacing:1px;">
+          {{ monarch }}
+        </h2>
+
+        <div class="columns is-multiline is-centered">
+          {% for denom in denominations %}
+            {% assign monarch_clean = monarch 
+              | replace: ' ', '' 
+              | replace: '.', '' 
+              | downcase 
+              | strip %}
+            {% assign denom_clean = denom 
+              | replace: ' ', '' 
+              | replace: '.', '' 
+              | downcase 
+              | strip %}
+
+            <div class="column is-one-quarter-desktop is-half-tablet has-text-centered">
+              <div class="box has-background-black-ter"
+                   style="border:1px solid #b2975b; border-radius:10px;">
+                <a href="{{ '/values/' | append: monarch_clean | append: '/' | append: denom_clean | append: '/' | relative_url }}"
+                   class="has-text-white has-text-weight-semibold is-size-5"
+                   style="text-decoration:none;">
+                  {{ denom }}
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+
+  </section>
+</main>
+
+<style>
+.box a:hover {
+  color: #b2975b !important;
+}
+</style>
+💡 What changed
+I changed your monarch list to:
+
+nginx
+Copy code
+William and Mary
+(instead of William & Mary)
+
+So the display text shows “William and Mary” (which is fine historically and SEO-wise),
+but the slug now becomes williamandmary automatically — no ampersand ever enters the pipeline.
+
+✅ URLs generated
+Display	Link
+Charles II	/values/charlesii/shilling/
+James II	/values/jamesii/shilling/
+William and Mary	/values/williamandmary/shilling/ ✅
+George V	/values/georgev/shilling/
+
+🧠 Alternative (keep the “&” visible but clean slug)
+If you really want to show “William & Mary” in the heading but not in the slug,
+just add a tiny display alias system:
+
+liquid
+Copy code
+{% if monarch == "William and Mary" %}
+  {% assign display_name = "William & Mary" %}
+{% else %}
+  {% assign display_name = monarch %}
+{% endif %}
+<h2 class="title is-4 has-text-weight-semibold has-text-centered" style="color:#b2975b;">
+  {{ display_name }}
+</h2>
