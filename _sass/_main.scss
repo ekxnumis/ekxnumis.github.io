@@ -348,3 +348,45 @@ html[data-theme='light'] .site-footer {
     }
   }
 }
+
+/* ==========================================================
+   FIX: CONTAIN WATERMARK + PREVENT MOBILE SCROLL
+   ========================================================== */
+
+/* Contain and clip watermark within the header area */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* disable horizontal scroll globally */
+}
+
+.navbar.is-primary {
+  position: relative;
+  overflow-x: hidden; /* prevent watermark from overflowing */
+}
+
+/* Ensure watermark never exceeds container width */
+.navbar.is-primary::after {
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Slightly larger on mobile but still clipped */
+@media (max-width: 768px) {
+  .navbar.is-primary::after {
+    font-size: 22vw;
+    transform: translateX(-1%);
+  }
+}
+
+/* Optional: fade edges so “E” and “S” don’t look harsh */
+.navbar.is-primary::after {
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
