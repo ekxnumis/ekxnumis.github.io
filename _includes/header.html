@@ -153,5 +153,44 @@
 }
 
 </style>
+
+
+<style>
+/* ========================= */
+/* MOBILE HEADER FIX: Prevent Horizontal Scroll + Balance Watermark */
+/* ========================= */
+
+/* Stop the entire page from scrolling sideways */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Contain everything inside the primary header */
+.navbar.is-primary {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Adjust the watermark positioning for mobile (assuming it's via ::before or background) */
+.navbar.is-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit; /* keeps your existing gradient */
+  background-position: center; /* centers the watermark */
+  background-repeat: no-repeat;
+  background-size: 130% auto; /* zoom slightly beyond width for cropped effect */
+  overflow: hidden;
+}
+
+/* Tweak for smaller screens so both E and S stay cropped */
+@media (max-width: 768px) {
+  .navbar.is-primary::before {
+    background-position: center;
+    background-size: 140% auto; /* slightly larger to ensure S is hidden */
+  }
+}
+</style>
 {% endif %}
 
