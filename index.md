@@ -7,26 +7,43 @@ show_sidebar: False
 
 <main id="main-content" class="container is-max-widescreen">
 
-    <section class="hero is-medium main-hero py-6 mb-6">
-        <div class="hero-body has-text-centered">
-            <p class="title is-1 hero-title mb-4">
-                Ekxnumis: The Collector's Compass 🧭
-            </p>
-            <p class="subtitle is-4 hero-subtitle">
-                Your definitive reference for British coin grading, varieties, and numismatic research.
-            </p>
-            <div class="buttons is-centered mt-5">
-                <a href="/grading/" class="button is-primary is-large is-outlined">
-                    <span class="icon"><i class="fas fa-search-dollar"></i></span>
-                    <span>Start Grading</span>
-                </a>
-                <a href="/blog/" class="button is-link is-large is-outlined">
-                    <span class="icon"><i class="fas fa-scroll"></i></span>
-                    <span>Explore Varieties</span>
-                </a>
-            </div>
-        </div>
-    </section>
+<section class="hero is-medium main-hero has-background">
+  <div class="hero-background" 
+       style="background: url('https://i.postimg.cc/ZqYqmM1n/background_for_hero_banner.png') center/cover no-repeat; 
+              position: absolute; inset: 0; opacity: 0.25;">
+  </div>
+
+  <div class="hero-body has-text-centered" style="position: relative; z-index: 1;">
+    <p class="title is-1 hero-title mb-3">
+      Ekxnumis: The Collector's Compass 🧭
+    </p>
+    <p class="subtitle is-4 hero-subtitle mb-5">
+      Exploring three centuries of British milled coinage, from Charles II's great recoinage<br>
+      through to the eve of decimalisation.
+    </p>
+
+    <!-- Stat line -->
+    <div class="hero-stats is-size-5 mb-6">
+      <span><strong>1662</strong> Milled Coinage Begins</span>
+      <span class="divider">|</span>
+      <span><strong>305 Years</strong> of History</span>
+      <span class="divider">|</span>
+      <span><strong>14 Monarchs</strong> Featured</span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons is-centered mt-4">
+      <a href="/grading/" class="button is-primary is-large is-outlined">
+        <span class="icon"><i class="fas fa-search-dollar"></i></span>
+        <span>Start Grading</span>
+      </a>
+      <a href="/blog/" class="button is-link is-large is-outlined">
+        <span class="icon"><i class="fas fa-scroll"></i></span>
+        <span>Explore Varieties</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <div class="columns is-multiline is-variable is-6">
 
@@ -114,102 +131,168 @@ show_sidebar: False
 
 <style>
 :root {
-    /* --- DARK MODE (DEFAULT) --- */
-    --main-bg: #1c1c1c;
-    --hero-bg: #2a2a2a;
-    --box-bg: #242424;
-    --main-text: #ffffff;
-    --sub-text: #b5b5b5;
-    --title-accent: #07f3f3ff; /* Light warning color */
-    --divider-color: #4a4a4a;
-    --box-title-primary: #85d9ee; /* Light primary/link color */
+  /* --- DARK MODE (DEFAULT) --- */
+  --main-bg: #1c1c1c;
+  --hero-bg: #2a2a2a;
+  --box-bg: #242424;
+  --main-text: #eca60eff;
+  --sub-text: #b5b5b5;
+  --title-accent: #07f3f3ff; /* Accent for dark mode */
+  --divider-color: #4a4a4a;
+  --box-title-primary: #85d9ee;
 }
 
 @media (prefers-color-scheme: light) {
-    :root {
-        /* --- LIGHT MODE OVERRIDES (HIGH CONTRAST) --- */
-        --main-bg: #f5f5f5;
-        --hero-bg: #e0e0e0;
-        --box-bg: #ffffff;
-        --main-text: #363636;
-        --sub-text: #4a4a4a;
-        --title-accent: #000000; /* Use black for max contrast on Monarch cards */
-        --divider-color: #dbdbdb;
-        --box-title-primary: #00d1b2; /* Bulma primary */
-    }
-    
-    /* Add subtle shadow to boxes in light mode for definition */
-    .feature-box, .monarch-card, .conversion-box {
-        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-    }
-    /* Remove shadow from the hero section which is usually flat */
-    .main-hero {
-        box-shadow: none !important;
-    }
+  :root {
+    /* --- LIGHT MODE OVERRIDES (HIGH CONTRAST) --- */
+    --main-bg: #f5f5f5;
+    --hero-bg: #e0e0e0;
+    --box-bg: #ffffff;
+    --main-text: #363636;
+    --sub-text: #4a4a4a;
+    --title-accent: #000000;
+    --divider-color: #dbdbdb;
+    --box-title-primary: #00d1b2;
+  }
+
+  /* Add subtle shadow to boxes in light mode */
+  .feature-box,
+  .monarch-card,
+  .conversion-box {
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1),
+                0 0 0 1px rgba(10, 10, 10, 0.1);
+  }
+
+  /* Remove shadow from the hero section */
+  .main-hero {
+    box-shadow: none !important;
+  }
 }
 
 /* ----------------------------------------------------------------
-   APPLYING THE CSS VARIABLES TO THE PAGE ELEMENTS 
-   ---------------------------------------------------------------- */
+   PAGE-WIDE COLOR & STRUCTURE APPLICATION
+------------------------------------------------------------------*/
 
 /* Body/Main Content Background */
 body {
-    background-color: var(--main-bg);
+  background-color: var(--main-bg);
 }
 
-/* Hero Section */
-.main-hero {
-    background-color: var(--hero-bg) !important;
-}
-.hero-title {
-    color: var(--main-text) !important;
-}
-.hero-subtitle {
-    color: var(--sub-text) !important;
-}
-
-/* Feature Boxes & Conversion Box */
-.feature-box, .monarch-card, .conversion-box {
-    background-color: var(--box-bg) !important;
-    color: var(--sub-text) !important;
-    /* Ensure no text-light/dark classes conflict */
-    padding: 20px; /* Reset Bulma padding */
-}
-
-.box-title {
-    /* Uses the accent color for Grading/Variety titles, but falls back to dark text in light mode for the Monarch/Conversion titles */
-    color: var(--box-title-primary) !important;
-}
-.box-text {
-    color: var(--sub-text) !important;
-}
-
-
-/* Monarch Card Titles (Need High Contrast) */
-.monarch-card .monarch-title {
-    /* This title needs to be high contrast in light mode (black) 
-       and light in dark mode, so we use the title-accent variable. */
-    color: var(--title-accent) !important;
+/* Section Dividers */
+.divider-hr {
+  border: 1px solid var(--divider-color) !important;
+  margin: 0.5rem 0 2rem 0 !important;
 }
 
 /* General Section Titles */
 .section-title {
-    color: var(--main-text) !important;
+  color: var(--main-text) !important;
 }
 
-/* Dividers */
-.divider-hr {
-    border: 1px solid var(--divider-color) !important; 
-    margin: 0.5rem 0 2rem 0 !important;
+/* Boxes & Cards */
+.feature-box,
+.monarch-card,
+.conversion-box {
+  background-color: var(--box-bg) !important;
+  color: var(--sub-text) !important;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Hover effect from original code */
+.box-title {
+  color: var(--box-title-primary) !important;
+}
+
+.box-text {
+  color: var(--sub-text) !important;
+}
+
+/* Monarch Card Titles */
+.monarch-card .monarch-title {
+  color: var(--title-accent) !important;
+}
+
+/* Hover effect for clickable cards */
 .is-clickable-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 .is-clickable-card {
-    text-decoration: none !important;
+  text-decoration: none !important;
+}
+
+/* ----------------------------------------------------------------
+   HERO SECTION STYLES
+------------------------------------------------------------------*/
+
+.main-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--hero-bg) !important;
+}
+
+/* Background overlay for image contrast */
+.main-hero .hero-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85));
+  z-index: 0;
+}
+
+/* Hero text */
+.hero-title {
+  color: var(--main-text) !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero-subtitle {
+  color: var(--sub-text) !important;
+}
+
+/* Stats line (with pipe dividers) */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--main-text);
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.hero-stats span strong {
+  font-weight: 600;
+}
+
+.hero-stats .divider {
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+/* Button spacing & consistency */
+.buttons.is-centered .button {
+  margin: 0 0.5rem;
+}
+
+/* --- Fix hero overlap spacing --- */
+.main-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--hero-bg) !important;
+  margin-bottom: 4rem; /* space between hero and next section */
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Ensure hero content doesn’t clip into image overlay */
+.main-hero .hero-body {
+  position: relative;
+  z-index: 1;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 </style>
 
