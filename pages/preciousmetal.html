@@ -50,7 +50,20 @@ permalink: /preciousmetal/
     color: #ffffff !important;
   }
 }
+
+/* Make premium results blue + bold */
+.premium-result {
+  color: #4da3ff !important;   /* soft blue */
+  font-weight: bold;
+}
+
+/* STRONG OVERRIDE – will take priority over paragraph styling */
+#premium-results-area .premium-result {
+  color: #e6b800 !important;  /* gold colour */
+  font-weight: bold;
+}
 </style>
+
 <main id="main-content" class="container is-max-desktop">
   <h1 class="title is-2 has-text-white mb-4">Live Gold & Silver Prices</h1>
   <p class="subtitle is-5 has-text-grey-light mb-5">
@@ -58,9 +71,13 @@ permalink: /preciousmetal/
   </p>
 
   <!-- GOLD card -->
-<div class="column">
-  <div class="box has-background-dark">
-    <h2 class="title is-4 has-text-white">Gold</h2>
+<section id="Gold Sovereign Spot Price"
+         class="section"
+         style="background: linear-gradient(to right,#595a59,#000,#595a59); padding:3rem 2rem;">
+ 
+         
+<div class="box">
+<h2 class="title is-3" style="color:#b2975b;">Gold</h2>
     <div class="table-container">
       <table
         class="table is-bordered is-fullwidth has-text-centered"
@@ -97,12 +114,11 @@ permalink: /preciousmetal/
       </table>
     </div>
   </div>
-</div>
-
+<hr>
 <!-- SILVER card -->
-<div class="column">
-  <div class="box has-background-dark">
-    <h2 class="title is-4 has-text-white">Silver</h2>
+<div class="box">
+<h2 class="title is-3" style="color:#b2975b;">Silver</h2>
+
     <div class="table-container">
       <table
         class="table is-bordered is-fullwidth has-text-centered"
@@ -141,18 +157,31 @@ permalink: /preciousmetal/
 </div>
     <!-- Source note -->
      <div>
-    <p style="font-size: 0.7rem; color: #5e5e5e; text-align: right; margin-top: 0.5rem;">
+    <p style="font-size: 0.7rem; color: #000000; text-align: right; margin-top: 0.5rem;">
       Source: BullionVault
     </p>
   </div>
+</section>
+
+<hr style="border: 1px solid #2596be; margin: 2 em 0;">
 
 
 <!-- SOVEREIGN PRICE CARD -->
-<div class="column">
-  <div class="box has-background-dark">
-    <h2 class="title is-4 has-text-white">Gold Sovereign Spot Price</h2>
+
+<h1 class="title is-2 has-text-white mb-4">Spot Price - Sovereigns</h1>
+<p class="subtitle is-5 has-text-grey-light mb-5">
+  Real-time spot values for full and half sovereigns, based on live gold price.
+</p>
+
+<section id="Gold Sovereign Spot Price"
+         class="section"
+         style="background: linear-gradient(to right,#abfa,#000,#abfa); padding:3rem 2rem;">
+
+  <!-- FULL SOVEREIGN SPOT -->
+  <div class="box">
+    <h2 class="title is-3" style="color:#b2975b;">Gold Sovereign Spot Price</h2>
     <p class="has-text-grey-light" style="font-size: 0.9rem; margin-bottom: 1rem;">
-      Based on live gold price (contains 7.3224g of fine gold)
+      Based on live gold price (contains 7.3224g of fine gold).
     </p>
     <div class="table-container">
       <table
@@ -178,25 +207,201 @@ permalink: /preciousmetal/
       </table>
     </div>
   </div>
-</div>
+<hr>
+  <!-- HALF SOVEREIGN SPOT -->
+  <div class="box">
+    <h2 class="title is-3" style="color:#b2975b;">Gold Half Sovereign Spot Price</h2>
+    <p class="has-text-grey-light" style="font-size: 0.9rem; margin-bottom: 1rem;">
+      Based on live gold price (contains 3.6612g of fine gold).
+    </p>
+    <div class="table-container">
+      <table
+        class="table is-bordered is-fullwidth has-text-centered"
+        style="border: 2px solid #666; border-collapse: collapse; margin-top: 0;"
+      >
+        <thead>
+          <tr>
+            <th style="border: 2px solid #666; padding: 0.6rem;">Currency</th>
+            <th style="border: 2px solid #666; padding: 0.6rem;">Spot Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="border: 2px solid #666; text-align: center;">GBP (£)</th>
+            <td id="half-sovereign-gbp" style="border: 2px solid #666; text-align: center;">Loading...</td>
+          </tr>
+          <tr>
+            <th style="border: 2px solid #666; text-align: center;">USD ($)</th>
+            <td id="half-sovereign-usd" style="border: 2px solid #666; text-align: center;">Loading...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr style="border: 1px solid #2596be; margin: 2 em 0;">
+
+  <!-- PREMIUM CALCULATORS -->
+<h1 class="title is-2 has-text-white mb-4">Premium Calculators</h1>
+<p class="subtitle is-5 has-text-grey-light mb-5">
+  Calculate how much above or below spot you are paying for Full Sovereign and Half Sovereign.
+</p>
+
+<section id="premium-calculators"
+         class="section"
+         style="background: linear-gradient(to right,#015981,#000,#015981); padding:3rem 2rem;">
+
+  <div id="premium-results-area">
+
+    <!-- ========================= -->
+    <!-- FULL SOVEREIGN CALCULATOR -->
+    <!-- ========================= -->
+    <div class="box">
+      <h2 class="title is-3" style="color:#b2975b;">Premium Calculator — Full Sovereign</h2>
+      <p class="has-text-grey-light" style="font-size: 0.9rem; margin-bottom: 1rem;">
+        Enter the price you are paying for a <strong>full sovereign</strong> and compare it to live spot price.
+      </p>
+
+      <div class="columns is-variable is-5">
+        
+        <!-- Full Sovereign GBP -->
+        <div class="column">
+          <h3 class="title is-5" style="color:#b2975b;">GBP (£)</h3>
+          <div class="field">
+            <label class="label has-text-white is-size-6">Price you are paying (GBP)</label>
+            <div class="control">
+              <input id="user-full-gbp" class="input" type="number" step="0.01" min="0" placeholder="e.g. 450">
+            </div>
+          </div>
+
+          <button class="button is-link is-small" type="button"
+                  onclick="calculatePremium('full','GBP')">
+            Calculate Premium
+          </button>
+
+          <p class="has-text-grey-light is-size-6" style="margin-top:0.7rem;">
+            <strong>Result:</strong>
+            <span id="premium-full-gbp-abs" class="premium-result">—</span>
+            (<span id="premium-full-gbp-pct" class="premium-result">—</span>)
+          </p>
+        </div>
+
+        <!-- Full Sovereign USD -->
+        <div class="column">
+          <h3 class="title is-5" style="color:#b2975b;">USD ($)</h3>
+          <div class="field">
+            <label class="label has-text-white is-size-6">Price you are paying (USD)</label>
+            <div class="control">
+              <input id="user-full-usd" class="input" type="number" step="0.01" min="0" placeholder="e.g. 550">
+            </div>
+          </div>
+
+          <button class="button is-link is-small" type="button"
+                  onclick="calculatePremium('full','USD')">
+            Calculate Premium
+          </button>
+
+          <p class="has-text-grey-light is-size-6" style="margin-top:0.7rem;">
+            <strong>Result:</strong>
+            <span id="premium-full-usd-abs" class="premium-result">—</span>
+            (<span id="premium-full-usd-pct" class="premium-result">—</span>)
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- ========================= -->
+    <!-- HALF SOVEREIGN CALCULATOR -->
+    <!-- ========================= -->
+    <div class="box">
+      <h2 class="title is-3" style="color:#b2975b;">Premium Calculator — Half Sovereign</h2>
+      <p class="has-text-grey-light" style="font-size: 0.9rem; margin-bottom: 1rem;">
+        Enter the price you are paying for a <strong>half sovereign</strong> and compare it to live spot price.
+      </p>
+
+      <div class="columns is-variable is-5">
+
+        <!-- Half Sovereign GBP -->
+        <div class="column">
+          <h3 class="title is-5" style="color:#b2975b;">GBP (£)</h3>
+          <div class="field">
+            <label class="label has-text-white is-size-6">Price you are paying (GBP)</label>
+            <div class="control">
+              <input id="user-half-gbp" class="input" type="number" step="0.01" min="0" placeholder="e.g. 230">
+            </div>
+          </div>
+
+          <button class="button is-link is-small" type="button"
+                  onclick="calculatePremium('half','GBP')">
+            Calculate Premium
+          </button>
+
+          <p class="has-text-grey-light is-size-6" style="margin-top:0.7rem;">
+            <strong>Result:</strong>
+            <span id="premium-half-gbp-abs" class="premium-result">—</span>
+            (<span id="premium-half-gbp-pct" class="premium-result">—</span>)
+          </p>
+        </div>
+
+        <!-- Half Sovereign USD -->
+        <div class="column">
+          <h3 class="title is-5" style="color:#b2975b;">USD ($)</h3>
+          <div class="field">
+            <label class="label has-text-white is-size-6">Price you are paying (USD)</label>
+            <div class="control">
+              <input id="user-half-usd" class="input" type="number" step="0.01" min="0" placeholder="e.g. 280">
+            </div>
+          </div>
+
+          <button class="button is-link is-small" type="button"
+                  onclick="calculatePremium('half','USD')">
+            Calculate Premium
+          </button>
+
+          <p class="has-text-grey-light is-size-6" style="margin-top:0.7rem;">
+            <strong>Result:</strong>
+            <span id="premium-half-usd-abs" class="premium-result">—</span>
+            (<span id="premium-half-usd-pct" class="premium-result">—</span>)
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div> <!-- /premium-results-area -->
+
+</section>
 
 <div class="tags is-centered" style="margin-top:2rem;">
     <a class="tag is-link is-medium" href="/">
       ← Back to Home
     </a>
   </div>
-
 </main>
 
 <script>
 const BV_URL = "https://www.bullionvault.com/view_market_json.do";
 const OUNCE_TO_GRAM = 31.1034768;
 const SOVEREIGN_WEIGHT_GRAMS = 7.3224;
+const HALF_SOVEREIGN_WEIGHT_GRAMS = 3.6612;
 
 function formatCurrency(value, currency) {
   if (!value || isNaN(value)) return "N/A";
   const symbol = currency === "GBP" ? "£" : currency === "USD" ? "$" : "€";
   return symbol + value.toFixed(2);
+}
+
+// Helper: get numeric value from an element like "£430.25"
+function getNumericFromElement(id) {
+  const el = document.getElementById(id);
+  if (!el) return NaN;
+  const text = el.textContent || "";
+  const cleaned = text.replace(/[^0-9.\-]/g, "");
+  return parseFloat(cleaned);
 }
 
 async function fetchAndRender() {
@@ -220,12 +425,11 @@ async function fetchAndRender() {
         );
 
         if (!item) {
-          ["kg", "oz", "g"].forEach(
-            (u) =>
-              (document.getElementById(
-                `${metal.toLowerCase()}-${cur.toLowerCase()}-${u}`
-              ).textContent = "N/A")
-          );
+          ["kg", "oz", "g"].forEach((u) => {
+            const id = `${metal.toLowerCase()}-${cur.toLowerCase()}-${u}`;
+            const el = document.getElementById(id);
+            if (el) el.textContent = "N/A";
+          });
           return;
         }
 
@@ -240,14 +444,14 @@ async function fetchAndRender() {
         const values = { kg: midPerKg, oz: perOunce, g: perGram };
 
         for (const [u, val] of Object.entries(values)) {
-          document.getElementById(
-            `${metal.toLowerCase()}-${cur.toLowerCase()}-${u}`
-          ).textContent = formatCurrency(val, cur);
+          const id = `${metal.toLowerCase()}-${cur.toLowerCase()}-${u}`;
+          const el = document.getElementById(id);
+          if (el) el.textContent = formatCurrency(val, cur);
         }
       });
     });
 
-    // --- Sovereign Calculation ---
+    // === Sovereign spot calculation (FULL + HALF, GBP & USD) ===
     const goldGBPText = document
       .getElementById("gold-gbp-g")
       .textContent.replace(/[£$,]/g, "");
@@ -258,6 +462,7 @@ async function fetchAndRender() {
     const goldGBP = parseFloat(goldGBPText);
     const goldUSD = parseFloat(goldUSDText);
 
+    // Full sovereign
     if (!isNaN(goldGBP)) {
       const sovereignGBP = goldGBP * SOVEREIGN_WEIGHT_GRAMS;
       document.getElementById("sovereign-gbp").textContent =
@@ -273,8 +478,26 @@ async function fetchAndRender() {
     } else {
       document.getElementById("sovereign-usd").textContent = "N/A";
     }
+
+    // Half sovereign = fine weight 3.6612g
+    if (!isNaN(goldGBP)) {
+      const halfSovGBP = goldGBP * HALF_SOVEREIGN_WEIGHT_GRAMS;
+      document.getElementById("half-sovereign-gbp").textContent =
+        formatCurrency(halfSovGBP, "GBP");
+    } else {
+      document.getElementById("half-sovereign-gbp").textContent = "N/A";
+    }
+
+    if (!isNaN(goldUSD)) {
+      const halfSovUSD = goldUSD * HALF_SOVEREIGN_WEIGHT_GRAMS;
+      document.getElementById("half-sovereign-usd").textContent =
+        formatCurrency(halfSovUSD, "USD");
+    } else {
+      document.getElementById("half-sovereign-usd").textContent = "N/A";
+    }
   } catch (err) {
     console.error("Error fetching BullionVault data:", err);
+
     ["gold", "silver"].forEach((m) =>
       ["gbp", "usd", "eur"].forEach((c) =>
         ["kg", "oz", "g"].forEach((u) => {
@@ -284,9 +507,55 @@ async function fetchAndRender() {
       )
     );
 
-    document.getElementById("sovereign-gbp").textContent = "Error";
-    document.getElementById("sovereign-usd").textContent = "Error";
+    const ids = [
+      "sovereign-gbp",
+      "sovereign-usd",
+      "half-sovereign-gbp",
+      "half-sovereign-usd",
+    ];
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = "Error";
+    });
   }
+}
+
+// Calculate premium for full / half sovereign in GBP / USD
+function calculatePremium(type, currency) {
+  let inputId, spotId, absId, pctId;
+
+  if (type === "full") {
+    inputId = currency === "GBP" ? "user-full-gbp" : "user-full-usd";
+    spotId = currency === "GBP" ? "sovereign-gbp" : "sovereign-usd";
+    absId  = currency === "GBP" ? "premium-full-gbp-abs" : "premium-full-usd-abs";
+    pctId  = currency === "GBP" ? "premium-full-gbp-pct" : "premium-full-usd-pct";
+  } else if (type === "half") {
+    inputId = currency === "GBP" ? "user-half-gbp" : "user-half-usd";
+    spotId = currency === "GBP" ? "half-sovereign-gbp" : "half-sovereign-usd";
+    absId  = currency === "GBP" ? "premium-half-gbp-abs" : "premium-half-usd-abs";
+    pctId  = currency === "GBP" ? "premium-half-gbp-pct" : "premium-half-usd-pct";
+  } else {
+    return;
+  }
+
+  const paid = parseFloat(document.getElementById(inputId).value);
+  const spot = getNumericFromElement(spotId);
+
+  const absSpan = document.getElementById(absId);
+  const pctSpan = document.getElementById(pctId);
+
+  if (isNaN(paid) || isNaN(spot) || spot <= 0) {
+    absSpan.innerHTML = "<strong>—</strong>";
+    pctSpan.innerHTML = "<strong>—</strong>";
+    return;
+  }
+
+  const diff = paid - spot;            // amount above/below spot
+  const pct  = (diff / spot) * 100;    // % premium
+
+absSpan.innerHTML = `<strong style="color:#02e1f5;">${formatCurrency(Math.abs(diff), currency)}</strong>`; 
+const direction = diff >= 0 ? "above" : "below";
+pctSpan.innerHTML = `<strong style="color:#05f5b5;">${pct.toFixed(2)}% ${direction} spot</strong>`;
 }
 
 // Run immediately and every 10 min
