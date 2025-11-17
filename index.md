@@ -47,6 +47,35 @@ show_sidebar: False
 
 <div class="columns is-multiline is-variable is-6">
 
+<div class="column is-full">
+    <hr class="divider-hr">
+</div>
+
+<!-- ========================= -->
+<!-- PRECIOUS METALS SECTION -->
+<!-- ========================= -->
+<div class="container is-max-widescreen">
+    <section class="section py-6 metals-section">
+        <div class="content has-text-centered">
+            <h2 class="title is-3 has-text-weight-bold" style="color:#ECA60E; letter-spacing:1px;">
+                Live Precious Metal Price Index 💰
+            </h2>
+            <p class="subtitle is-5 has-text-grey-light mb-5">
+                Stay updated with real-time gold and silver rates in GBP, USD, and EUR — including the latest
+                <strong>Sovereign</strong> and <strong>Half Sovereign</strong> valuations (premium calculator).
+            </p>
+            <a href="/preciousmetal/" class="button is-warning is-medium is-outlined">
+                <span class="icon"><i class="fas fa-coins"></i></span>
+                <span>View Precious Metal Prices</span>
+            </a>
+        </div>
+    </section>
+</div>
+
+<div class="column is-full">
+    <hr class="divider-hr">
+</div>
+
 <div class="column is-half-desktop is-full-tablet">
             <div class="box feature-box p-5" style="height: 100%; border-left: 5px solid #00d1b2;">
                 <h2 class="title is-3 box-title mb-4">
@@ -67,7 +96,7 @@ show_sidebar: False
 <div class="column is-half-desktop is-full-tablet">
             <div class="box feature-box p-5" style="height: 100%; border-left: 5px solid #2596be;">
                 <h2 class="title is-3 box-title mb-4">
-                    Variety & Numismatic Blogs 📜
+                    Numismatic Articles 📜
                 </h2>
                 <p class="mb-4 is-size-5 box-text">
                     Dive into specific coin **varieties**, die states, mint marks, and historical anomalies. Our in-depth articles provide the research needed to identify the rarest and most unique pieces.
@@ -76,8 +105,8 @@ show_sidebar: False
                     <li><span class="icon has-text-link"><i class="fas fa-check"></i></span> Explore articles by Monarch.</li>
                     <li><span class="icon has-text-link"><i class="fas fa-check"></i></span> Discover unique coin errors.</li>
                 </ul>
-                <a href="/blog/" class="button is-link is-fullwidth is-outlined">
-                    <strong>Read Variety Articles</strong>
+                <a href="/blog/" class="button is-primary is-fullwidth is-outlined">
+                    <strong>Read Articles</strong>
                 </a>
             </div>
         </div>
@@ -293,6 +322,11 @@ body {
   z-index: 1;
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+.metals-section {
+  background: linear-gradient(to right,#595a59,#000000,#595a59);
+  border-radius: 8px;
+  margin-bottom: 3rem;
 }
 </style>
 

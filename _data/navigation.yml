@@ -203,7 +203,7 @@ sidebar:
     url: /
   #- title: "Shop"
     #url: /shop/
-  - title: "Blog"
+  - title: "Articles"
     url: /blog/
     children:
       - title: "George II"
@@ -214,8 +214,8 @@ sidebar:
         url: /blog/Victoria/
       - title: "George V"
         url: /blog/GeorgeV/
-  - title: "Links"
-    url: /links/
+  - title: "Gold/Silver Prices"
+    url: /preciousmetal/
   - title: "Grading"
     url: /grading/
     children:
@@ -225,11 +225,13 @@ sidebar:
         url: /grading/system-comparison.html
       - title: "Grading Guide"
         url: /grading/guide.html
-  - title: "Collector's Ref"
-    url: /collectors/
   - title: "Reference Area"
+    url: /collectors/
+  - title: "Reference Books"
     url: /reference/
-  - title: "Gold/Silver Prices"
-    url: /preciousmetal/
- # - title: "Gallery"
-    #url: /gallery/
+  - title: "Sovereigns"
+    url: /Sovereigns/  
+  - title: "Links"
+    url: /links/
+  - title: "Gallery"
+    url: /gallery/
