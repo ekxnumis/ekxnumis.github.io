@@ -58,7 +58,7 @@
    Navbar Gradient + Watermark
    =========================== */
 .navbar {
-  background: linear-gradient(to right, #003a79, #a30909, #003a79,);
+  background: linear-gradient(to right, #0e5199, #9b1010);
   position: relative;
   overflow: visible !important;   /* allow dropdowns to overflow */
   padding: 1rem 2rem;
@@ -193,4 +193,28 @@
 .navbar .navbar-brand .navbar-item:active {
   color: #fff !important;
   background: rgba(255, 255, 255, 0.15) !important; /* same overlay */
+}
+
+
+/* ========================================= */
+/* UNIFY HOVER STYLE FOR ALL NAVBAR ITEMS    */
+/* ========================================= */
+
+.navbar.is-primary .navbar-item:hover,
+.navbar.is-primary .navbar-link:hover,
+.navbar.is-primary .navbar-dropdown .navbar-item:hover,
+.navbar.is-primary .navbar-brand .navbar-item:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important; /* white transparent */
+  color: #fff !important;
+}
+
+/* Remove Bulma green/teal hover */
+.navbar.is-primary .navbar-item,
+.navbar.is-primary .navbar-link {
+  transition: background-color 0.2s ease; /* smooth hover */
+}
+
+/* Mobile menu hover (burger-expanded) */
+.navbar.is-primary .navbar-menu .navbar-item:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
 }
