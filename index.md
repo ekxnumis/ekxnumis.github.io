@@ -1,7 +1,7 @@
 ---
 title: Ekxnumis
 subtitle: Exploring the World of British Coins
-layout: default
+layout: light-locked
 show_sidebar: False
 ---
 
@@ -171,32 +171,8 @@ show_sidebar: False
   --box-title-primary: #85d9ee;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    /* --- LIGHT MODE OVERRIDES (HIGH CONTRAST) --- */
-    --main-bg: #f5f5f5;
-    --hero-bg: #e0e0e0;
-    --box-bg: #ffffff;
-    --main-text: #363636;
-    --sub-text: #4a4a4a;
-    --title-accent: #000000;
-    --divider-color: #dbdbdb;
-    --box-title-primary: #00d1b2;
-  }
 
-  /* Add subtle shadow to boxes in light mode */
-  .feature-box,
-  .monarch-card,
-  .conversion-box {
-    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1),
-                0 0 0 1px rgba(10, 10, 10, 0.1);
-  }
 
-  /* Remove shadow from the hero section */
-  .main-hero {
-    box-shadow: none !important;
-  }
-}
 
 /* ----------------------------------------------------------------
    PAGE-WIDE COLOR & STRUCTURE APPLICATION

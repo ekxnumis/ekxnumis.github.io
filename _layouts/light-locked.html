@@ -1,0 +1,105 @@
+<!doctype html>
+<html
+  dir="{{ site.direction | default: 'ltr' }}"
+  lang="{{ site.lang | default: 'en' }}"
+  class="{% if site.fixed_navbar %} has-navbar-fixed-{{ site.fixed_navbar }} {% endif %} {% if site.force_theme %} theme-{{ site.force_theme }} {% endif %}"
+>
+  {% include head.html %}
+
+  <!-- 🔥 FORCE DARK MODE SAFELY (does NOT change your colors) -->
+  <meta name="color-scheme" content="dark">
+
+  <body>
+    {% include skip-to-content.html %}
+    {% if site.cookie_policy %}
+      {% include cookie-banner.html %}
+    {% endif %}
+
+    {% include header.html %}
+
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          
+          {% if page.url != "/" %}
+          <div class="is-hidden-tablet has-text-right mb-3">
+            <button id="sidebar-toggle" class="button is-small is-link is-outlined">
+              ☰ Menu
+            </button>
+          </div>
+
+          <div class="column is-2-desktop is-3-tablet" id="sidebar-column">
+            <aside class="sidebar menu">
+              {% for item in site.data.navigation.sidebar %}
+              <a href="{{ item.url }}"
+                 class="menu-item {% if page.url == item.url %}is-active{% endif %}">
+                {{ item.title }}
+              </a>
+              {% endfor %}
+            </aside>
+          </div>
+          {% endif %}
+
+          <div class="{% if page.url != '/' %}column is-9-desktop is-8-tablet is-12-mobile{% else %}column is-12{% endif %}">
+
+            {% if site.show_hero and page.hide_hero != true %}
+              {% include hero.html %}
+            {% endif %}
+
+            {% if site.show_callouts %}
+              {% include callouts.html %}
+            {% endif %}
+
+            <main id="main-content">
+              {% include tabs.html %}
+              {% include showcase.html %}
+              {% include sponsors.html %}
+              {% include gallery.html %}
+              {{ content }}
+            </main>
+
+          </div>
+
+        </div>
+
+        {% if site.posts and page.show_sidebar %}
+          <div class="columns">
+            <div class="column is-12">
+              {% include latest-posts.html %}
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+    </section>
+
+    {% unless page.hide_footer %}
+      {% include footer.html %}
+    {% endunless %}
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.getElementById("sidebar-toggle");
+        const sidebarColumn = document.getElementById("sidebar-column");
+
+        if (toggleButton && sidebarColumn) {
+          toggleButton.addEventListener("click", () => {
+            sidebarColumn.classList.toggle("is-active");
+          });
+        }
+      });
+    </script>
+    
+    <script src="{{ site.baseurl }}/assets/js/app.js" type="text/javascript"></script>
+    {%- include footer-scripts.html -%}
+
+    {% if site.enable_content_protection %}
+      {% include content-protection.html %}
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {% include back-to-top.html %}
+  
+  </body>
+</html>
