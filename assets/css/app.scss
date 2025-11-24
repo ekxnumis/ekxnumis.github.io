@@ -219,3 +219,25 @@
 .navbar.is-primary .navbar-menu .navbar-item:hover {
   background-color: rgba(255, 255, 255, 0.12) !important;
 }
+
+/* ============================================
+   UNIVERSAL DARK TABLES (Ekxnumis Consistent)
+   ============================================ */
+.table,
+.table th,
+.table td {
+  background-color: #1b1b1b !important;  /* Dark background */
+  color: #eee !important;                 /* Light text */
+  border-color: #444 !important;          /* Softer border */
+}
+
+/* Optional: remove zebra stripes if Bulma adds */
+.table.is-striped tbody tr:nth-child(even) {
+  background-color: #222 !important;
+}
+
+/* Special label style for variety rarity tags */
+.variety-label {
+  color: #b2975b !important; /* medium gold – readable in light + dark */
+  font-weight: bold;
+}

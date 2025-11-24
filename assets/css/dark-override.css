@@ -1,0 +1,85 @@
+/* ============================================================
+   GLOBAL DARK MODE LOCK
+   Forces dark mode regardless of system settings
+   Applies to ALL pages using light-locked.html
+============================================================ */
+
+:root {
+  --main-bg: #1c1c1c;
+  --hero-bg: #2a2a2a;
+  --box-bg: #242424;
+  --main-text: #e6e6e6;
+  --sub-text: #b5b5b5;
+  --title-accent: #07f3f3ff;
+  --divider-color: #4a4a4a;
+  --box-title-primary: #85d9ee;
+}
+
+/* Body Background */
+body {
+  background: var(--main-bg) !important;
+  color: var(--main-text) !important;
+}
+
+/* Top-level headings */
+h1, h2 {
+  color: #eca60e !important; /* bright golden */
+}
+
+/* Lower-level headings */
+h3, h4, h5, h6 {
+  color: #b2975b !important; /* muted golden */
+}
+
+/* Bulma .title class (matches h1/h2 style) */
+/* Top-level page title only */
+.title.is-1,
+.title.is-2 {
+  color: #eca60e !important;   /* bright golden */
+}
+
+/* Smaller titles */
+.title.is-3,
+.title.is-4,
+.title.is-5,
+.title.is-6 {
+  color: #b2975b !important;   /* muted golden */
+}
+
+/* Body text */
+p,
+li {
+  color: #e6e6e6 !important; /* readable white */
+}
+
+/* Optional: keep inline spans inside paragraphs white */
+p span,
+li span {
+  color: #e6e6e6 !important;
+}
+
+/* Coin cards */
+.coin-card span {
+  color: var(--sub-text) !important;
+}
+
+/* Quick link tags */
+.tag {
+  background: #d7e8ee !important;
+  color: #000 !important;
+}
+
+/* Dividers (only for elements using class="divider-hr") */
+.divider-hr {
+  border-color: var(--divider-color) !important;
+}
+
+/* Table text inside variety column */
+td {
+  color: #e6e6e6 !important;
+}
+
+/* Make the variety code bold and white */
+td strong {
+  color: #e6e6e6 !important;
+}
