@@ -74,6 +74,7 @@ li span {
   border-color: var(--divider-color) !important;
 }
 
+
 /* Table text inside variety column */
 td {
   color: #e6e6e6 !important;
@@ -81,5 +82,9 @@ td {
 
 /* Make the variety code bold and white */
 td strong {
+  color: #e6e6e6 !important;
+}
+
+strong, b {
   color: #e6e6e6 !important;
 }
