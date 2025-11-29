@@ -88,3 +88,15 @@ td strong {
 strong, b {
   color: #e6e6e6 !important;
 }
+
+/* Fix Bulma grey classes in dark mode */
+.has-text-grey,
+.has-text-grey-light,
+.subtitle.is-5.has-text-grey-light {
+  color: #e6e6e6 !important; /* solid readable white */
+}
+
+/* Make strong text readable */
+strong {
+  color: #ffffff !important;
+}
